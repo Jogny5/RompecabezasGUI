@@ -11,7 +11,7 @@ public class Ventana extends JFrame{
         super();
         setTitle("Rompecabezas"); 
         this.setLayout(new BorderLayout());
-        //this.add(new PanelPrincipal( ),BorderLayout.CENTER);
+        this.add(new PanelPrincipal( ),BorderLayout.CENTER);
         
         this.setSize(1000,800);              
         setLocationRelativeTo(null);                    
