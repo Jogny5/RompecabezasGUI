@@ -11,13 +11,16 @@ public class Ventana extends JFrame{
         super();
         setTitle("Rompecabezas"); 
         this.setLayout(new BorderLayout());
-        this.add(new PanelPrincipal( ),BorderLayout.CENTER);
-        
+        this.add(new PanelPrincipal());
+        this.add(new PanelBotones(),BorderLayout.SOUTH);        
         this.setSize(1000,800);              
         setLocationRelativeTo(null);                    
         this.getContentPane().setBackground(Color.white);
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);       
-        this.setVisible(true); 
+        this.setVisible(true);
+        
     }
+    
+    
 }
