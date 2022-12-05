@@ -9,11 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class PanelBotones extends JPanel{
-    
-    private ModoEditor Meditor;
-    private ModoJuego Mjuego;
-    private int ModoDeJuego=0;
-    
+        
     public PanelBotones(){
         
         this.setLayout(new FlowLayout());
@@ -43,8 +39,7 @@ public class PanelBotones extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            //cambia al panel del modo editor
-            ModoDeJuego=0;
+            Ventana.getInstancia().ModoEditor();
         }
     };
     
@@ -52,8 +47,7 @@ public class PanelBotones extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            //cambia al panel del modo juego
-            ModoDeJuego=1;
+            Ventana.getInstancia().ModoJuego();
         }
     };
 }
