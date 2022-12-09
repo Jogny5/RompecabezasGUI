@@ -5,20 +5,25 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Toolkit;
+import java.awt.Point;
+import javax.swing.JComponent;
+import javax.swing.ImageIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PanelPrincipal extends JPanel implements MouseListener{
+public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionListener{
     
     private ModoEditor Meditor;
     private ModoJuego Mjuego;
     private int ModoDeJuego=0;
-    private Image img = Toolkit.getDefaultToolkit().getImage(PanelPrincipal.class.getResource("/kirby.jpg"));
+    private Image img = Toolkit.getDefaultToolkit().getImage(PanelPrincipal.class.getResource("/kirby.png"));
     public int L1x1;
     public int L1y1;
     public int L1x2=-1;
@@ -42,8 +47,8 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     public int yImagen3=10;
     public int xImagen4=10;
     public int yImagen4=10;
-    public int xImagenPanel=115;            //115
-    public int yImagenPanel=300;            //300
+    public int xImagenPanel=200;            //115
+    public int yImagenPanel=400;            //300
     public int anchoPanel=550;
     public int altoPanel=300;        
     
@@ -61,6 +66,9 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     public JLabel labelPieza1;
     public JLabel labelPieza2;
     
+    ImageIcon icon = new ImageIcon(img);
+    Point initialClick;
+    
     public PanelPrincipal(){
         
         this.setLayout(null);
@@ -70,8 +78,16 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         
         label=new JLabel();
         label.setBounds(xImagenPanel, yImagenPanel, anchoPanel, altoPanel);
+        label.setIcon(icon);
         label.addMouseListener(this);
         this.add(label);
+        
+        labelPieza1=new JLabel();
+        labelPieza1.setBounds(10,10,550,300);
+        labelPieza1.addMouseListener(this);
+        labelPieza1.addMouseMotionListener(this);
+        this.add(labelPieza1);
+        
         
         
         p1=new Polygon();
@@ -88,16 +104,14 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         super.paint(g);
         //pintar las piezas una vez las 4 esten hechas
         if(L1x2!=-1 && pieza2estado==1){
-            g.drawImage(img, 10, 10, anchoPanel, altoPanel,this);
+            
             g.setColor(Color.white);
             g.fillPolygon(p1);
             g.drawPolygon(p1);
         }
         
-        
         g.drawRect(xImagenPanel, yImagenPanel, anchoPanel, altoPanel);
-        g.drawImage(img, xImagenPanel, yImagenPanel, anchoPanel, altoPanel,this);
-        
+        g.drawImage(img, xImagenPanel, yImagenPanel, anchoPanel, altoPanel,this);        
         
         g.setColor(Color.blue);
         if(L1x2>=0){
@@ -420,8 +434,10 @@ public class PanelPrincipal extends JPanel implements MouseListener{
             System.out.println("rarraarra 44444");
         }
         
+        this.remove(label);
         
         
+        labelPieza1.setIcon(icon);
         
         
         repaint();
@@ -434,18 +450,53 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     
     @Override
     public void mouseClicked(MouseEvent e) {
+          
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        }
+        
+         initialClick = e.getPoint();
+         
+         System.out.println(initialClick.toString());
+    }
+    
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        
+        int thisX = labelPieza1.getLocation().x;
+        int thisY = labelPieza1.getLocation().y;
+       
+
+        // Determine how much the mouse moved since the initial click
+        int xMoved = (labelPieza1.getLocation().x + e.getX()) - (thisX + initialClick.x);
+        int yMoved = (labelPieza1.getLocation().y + e.getY()) - (thisY + initialClick.y);
+
+        // Move picture to this position
+        int X = thisX + xMoved;
+        int Y = thisY + yMoved;
+        
+        p1.translate(xMoved, yMoved);
+        
+        labelPieza1.setLocation(X,Y);
+        
+        repaint();
+    }
+    
+    public void mouseMoved(MouseEvent e){
+    }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        }
+         
+    }
 
+    
     @Override
     public void mouseEntered(MouseEvent e) {
+        
+        if (e.getSource() == label) {
         
         if(pieza1estado==0 && pieza2estado==0){
             int x=e.getX();
@@ -486,80 +537,86 @@ public class PanelPrincipal extends JPanel implements MouseListener{
             repaint();
             System.out.println("entrada "+x+" , "+y);
         }
-        
+        }
     }
 
+    
     @Override
     public void mouseExited(MouseEvent e) {
         
-        if(pieza1estado==1 && pieza2estado==0){
-            int x=e.getX();
-            int y=e.getY();
-            if(x<5){
-                x=0;
-            }else if(x>anchoPanel-2){
-                x=anchoPanel;
-            }
-            
-            if(y<5){
-                y=0;
-            }else if(y>altoPanel-4){
-                y=altoPanel;
-            }
-            
-            L2x2=x+xImagenPanel;
-            L2y2=y+yImagenPanel;
-            
-            if(L2x2<L2x1){
-                int aux=L2x1;
-                L2x1=L2x2;
-                L2x2=aux;
-                aux=L2y1;
-                L2y1=L2y2;
-                L2y2=aux;
-            }
-            
-            RellenaConPuntos.nuevaLinea(L2x1, L2y1, L2x2, L2y2, Linea2);
-            
-            repaint();
-            System.out.println("salida "+x+" , "+y);
-            pieza2estado=1;
-            interseccion();
-            
-            
-        }else if(pieza1estado==0 && pieza2estado==0){
-            int x=e.getX();
-            int y=e.getY();
-            if(x<5){
-                x=0;
-            }else if(x>anchoPanel-2){
-                x=anchoPanel;
-            }
-            
-            if(y<5){
-                y=0;
-            }else if(y>altoPanel-4){
-                y=altoPanel;
-            }
-            
-            L1x2=x+xImagenPanel;
-            L1y2=y+yImagenPanel;
-            if(L1x2<L1x1){
-                int aux=L1x1;
-                L1x1=L1x2;
-                L1x2=aux;
-                aux=L1y1;
-                L1y1=L1y2;
-                L1y2=aux;
-            }
-            
-            RellenaConPuntos.nuevaLinea(L1x1, L1y1, L1x2, L1y2, Linea1);
-
-            repaint();
-            System.out.println("salida "+x+" , "+y);
-            
-            pieza1estado=1;
-        }
         
+        if (e.getSource() == label) {
+            
+            if(pieza1estado==1 && pieza2estado==0){
+                int x=e.getX();
+                int y=e.getY();
+                if(x<5){
+                    x=0;
+                }else if(x>anchoPanel-2){
+                    x=anchoPanel;
+                }
+
+                if(y<5){
+                    y=0;
+                }else if(y>altoPanel-4){
+                    y=altoPanel;
+                }
+
+                L2x2=x+xImagenPanel;
+                L2y2=y+yImagenPanel;
+
+                if(L2x2<L2x1){
+                    int aux=L2x1;
+                    L2x1=L2x2;
+                    L2x2=aux;
+                    aux=L2y1;
+                    L2y1=L2y2;
+                    L2y2=aux;
+                }
+
+                RellenaConPuntos.nuevaLinea(L2x1, L2y1, L2x2, L2y2, Linea2);
+
+                repaint();
+                System.out.println("salida "+x+" , "+y);
+                pieza2estado=1;
+                interseccion();
+
+
+            }else if(pieza1estado==0 && pieza2estado==0){
+                int x=e.getX();
+                int y=e.getY();
+                if(x<5){
+                    x=0;
+                }else if(x>anchoPanel-2){
+                    x=anchoPanel;
+                }
+
+                if(y<5){
+                    y=0;
+                }else if(y>altoPanel-4){
+                    y=altoPanel;
+                }
+
+                L1x2=x+xImagenPanel;
+                L1y2=y+yImagenPanel;
+                if(L1x2<L1x1){
+                    int aux=L1x1;
+                    L1x1=L1x2;
+                    L1x2=aux;
+                    aux=L1y1;
+                    L1y1=L1y2;
+                    L1y2=aux;
+                }
+
+                RellenaConPuntos.nuevaLinea(L1x1, L1y1, L1x2, L1y2, Linea1);
+
+                repaint();
+                System.out.println("salida "+x+" , "+y);
+
+                pieza1estado=1;
+            }
+        }
     }
+    
+   
 }
