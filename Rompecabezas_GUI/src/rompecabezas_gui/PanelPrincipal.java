@@ -69,6 +69,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     ImageIcon icon = new ImageIcon(img);
     Point initialClick;
     
+    int icx1;
+    int icy1;
+    int count=0;
+    
     public PanelPrincipal(){
         
         this.setLayout(null);
@@ -105,7 +109,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         //pintar las piezas una vez las 4 esten hechas
         if(L1x2!=-1 && pieza2estado==1){
             
-            g.setColor(Color.white);
+            g.setColor(Color.black);
             g.fillPolygon(p1);
             g.drawPolygon(p1);
         }
@@ -457,31 +461,68 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     @Override
     public void mousePressed(MouseEvent e) {
         
-         initialClick = e.getPoint();
-         
-         System.out.println(initialClick.toString());
+            p1.getBounds();
+            System.out.println(p1.getBounds());
+            initialClick = e.getPoint();
+            icx1=e.getX()+labelPieza1.getLocation().x;
+            icy1=e.getY()+labelPieza1.getLocation().y;
+            
+            System.out.println(icx1+ "xd"+ icy1);
+            System.out.println(e.toString());
+
+            count=0;
     }
     
     @Override
     public void mouseDragged(MouseEvent e) {
         
-        int thisX = labelPieza1.getLocation().x;
-        int thisY = labelPieza1.getLocation().y;
-       
+                
+        if(p1.contains(icx1,icy1)==false && count==0){
+        
+            int thisX = labelPieza1.getLocation().x;
+            int thisY = labelPieza1.getLocation().y;
 
-        // Determine how much the mouse moved since the initial click
-        int xMoved = (labelPieza1.getLocation().x + e.getX()) - (thisX + initialClick.x);
-        int yMoved = (labelPieza1.getLocation().y + e.getY()) - (thisY + initialClick.y);
 
-        // Move picture to this position
-        int X = thisX + xMoved;
-        int Y = thisY + yMoved;
+            // Determine how much the mouse moved since the initial click
+            int xMoved = (labelPieza1.getLocation().x + e.getX()) - (thisX + initialClick.x);
+            int yMoved = (labelPieza1.getLocation().y + e.getY()) - (thisY + initialClick.y);
+
+            // Move picture to this position
+            int X = thisX + xMoved;
+            int Y = thisY + yMoved;
+
+            p1.translate(xMoved, yMoved);
+
+            labelPieza1.setLocation(X,Y);
+            
+            count=1;
+
+            repaint();
         
-        p1.translate(xMoved, yMoved);
+        }
         
-        labelPieza1.setLocation(X,Y);
+        else if(count==1){
         
-        repaint();
+            int thisX = labelPieza1.getLocation().x;
+            int thisY = labelPieza1.getLocation().y;
+
+
+            // Determine how much the mouse moved since the initial click
+            int xMoved = (labelPieza1.getLocation().x + e.getX()) - (thisX + initialClick.x);
+            int yMoved = (labelPieza1.getLocation().y + e.getY()) - (thisY + initialClick.y);
+
+            // Move picture to this position
+            int X = thisX + xMoved;
+            int Y = thisY + yMoved;
+
+            p1.translate(xMoved, yMoved);
+
+            labelPieza1.setLocation(X,Y);
+            
+            count=1;
+
+            repaint();
+        }
     }
     
     public void mouseMoved(MouseEvent e){
@@ -490,6 +531,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     @Override
     public void mouseReleased(MouseEvent e) {
          
+        initialClick = null;
+        
     }
 
     
