@@ -25,6 +25,14 @@ public class PanelBotones extends JPanel{
     }   
      
     public void Botones(){
+        JButton RotarIzq=new JButton("Rotar 90 izquierda");
+        RotarIzq.addActionListener(RIzq);
+        this.add(RotarIzq);
+        
+        JButton RotarDer=new JButton("Rotar 90 derecha");
+        RotarDer.addActionListener(RDer);
+        this.add(RotarDer);
+        
         JButton BotonEditor=new JButton("Modo editor");
         BotonEditor.addActionListener(Editoraccion);
         this.add(BotonEditor);
@@ -32,8 +40,24 @@ public class PanelBotones extends JPanel{
         JButton BotonJuego=new JButton("Modo Juego");
         BotonJuego.addActionListener(Juegoraccion);
         this.add(BotonJuego);
+ 
     }
     
+    ActionListener RIzq=new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            PanelPrincipal.getInstancia().RotarIzq();
+        }
+    };
+    
+    ActionListener RDer=new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            PanelPrincipal.getInstancia().RotarDer();
+        }
+    };
     
     ActionListener Editoraccion=new ActionListener() {
         @Override

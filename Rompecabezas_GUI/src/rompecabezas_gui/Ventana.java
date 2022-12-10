@@ -9,7 +9,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Ventana extends JFrame{
     
     private static final Ventana instancia = new Ventana();
-    private JPanel principal = new PanelPrincipal();
+    private JPanel principal = PanelPrincipal.getInstancia();
     private JPanel mjuego = new ModoJuego();
     private JPanel meditor = new ModoEditor();
     
