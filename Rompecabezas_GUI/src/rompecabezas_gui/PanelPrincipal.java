@@ -87,9 +87,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     ImageIcon icon3 = new ImageIcon(img3);
     
     int Rotacion=0;
-    int Rotacion1=0;
     int Rotacion2=0;
     int Rotacion3=0;
+    int Rotacion4=0;
     
     int LastRota=0;
     
@@ -98,6 +98,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     int icx1;
     int icy1;
     int count=0;
+    
+    int piezaSeleccionada=1;
     
     public PanelPrincipal(){
         
@@ -154,6 +156,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     public static PanelPrincipal getInstancia(){
         
         return instancia;
+    }
+    
+    public void setPiezaelegir(int x){
+        
+        piezaSeleccionada=x;
     }
     
     
@@ -2267,7 +2274,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     }
   
     public void RotarDer(){
-            
+        
+        if(piezaSeleccionada==1){   
         int xd= labelPieza1.getLocation().x;
         int yd =labelPieza1.getLocation().y;
         this.remove(labelPieza1);
@@ -2341,6 +2349,238 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                 }
             default:
                 break;
+        }
+        }
+        
+        if(piezaSeleccionada==2){   
+        int xd= labelPieza2.getLocation().x;
+        int yd =labelPieza2.getLocation().y;
+        this.remove(labelPieza2);
+        
+        switch (Rotacion2) {
+            case 0:
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon1);
+                this.add(labelPieza2);
+                Rotacion2=1;
+                break;
+            case 1:
+                if(LastRota==1){
+                
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon);
+                this.add(labelPieza2);
+                Rotacion2=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon2);
+                this.add(labelPieza2);
+                Rotacion2=2;
+                break;
+                }
+            case 2:
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon3);
+                this.add(labelPieza2);
+                Rotacion2=3;
+                break;
+            case 3:
+                if(LastRota==0){
+                
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon);
+                this.add(labelPieza2);
+                Rotacion2=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon2);
+                this.add(labelPieza2);
+                Rotacion2=2;
+                break;
+                }
+            default:
+                break;
+        }
+        }
+        
+        if(piezaSeleccionada==3){   
+        int xd= labelPieza3.getLocation().x;
+        int yd =labelPieza3.getLocation().y;
+        this.remove(labelPieza3);
+        
+        switch (Rotacion3) {
+            case 0:
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon1);
+                this.add(labelPieza3);
+                Rotacion3=1;
+                break;
+            case 1:
+                if(LastRota==1){
+                
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon);
+                this.add(labelPieza3);
+                Rotacion3=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon2);
+                this.add(labelPieza3);
+                Rotacion3=2;
+                break;
+                }
+            case 2:
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon3);
+                this.add(labelPieza3);
+                Rotacion3=3;
+                break;
+            case 3:
+                if(LastRota==0){
+                
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon);
+                this.add(labelPieza3);
+                Rotacion3=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon2);
+                this.add(labelPieza3);
+                Rotacion3=2;
+                break;
+                }
+            default:
+                break;
+        }
+        }
+        
+        if(piezaSeleccionada==4){   
+        int xd= labelPieza4.getLocation().x;
+        int yd =labelPieza4.getLocation().y;
+        this.remove(labelPieza4);
+        
+        switch (Rotacion4) {
+            case 0:
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon1);
+                this.add(labelPieza4);
+                Rotacion4=1;
+                break;
+            case 1:
+                if(LastRota==1){
+                
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon);
+                this.add(labelPieza4);
+                Rotacion=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon2);
+                this.add(labelPieza4);
+                Rotacion4=2;
+                break;
+                }
+            case 2:
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon3);
+                this.add(labelPieza4);
+                Rotacion4=3;
+                break;
+            case 3:
+                if(LastRota==0){
+                
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon);
+                this.add(labelPieza4);
+                Rotacion4=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon2);
+                this.add(labelPieza4);
+                Rotacion4=2;
+                break;
+                }
+            default:
+                break;
+        }
         }
         
         LastRota=0;
@@ -2349,6 +2589,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     
     public void RotarIzq(){
             
+        if(piezaSeleccionada==1){
+        
         int xd= labelPieza1.getLocation().x;
         int yd =labelPieza1.getLocation().y;
         this.remove(labelPieza1);
@@ -2425,11 +2667,252 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             default:
                 break;
         }
+        }
+        
+        if(piezaSeleccionada==2){
+        
+        int xd= labelPieza2.getLocation().x;
+        int yd =labelPieza2.getLocation().y;
+        this.remove(labelPieza2);
+        
+        switch (Rotacion2) {
+            case 0:
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon3);
+                this.add(labelPieza2);
+                Rotacion2=1;
+                break;
+            case 1:
+                
+                if(LastRota==0){
+                
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon);
+                this.add(labelPieza2);
+                Rotacion2=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon2);
+                this.add(labelPieza2);
+                Rotacion2=2;
+                break;
+                }
+            case 2:
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon1);
+                this.add(labelPieza2);
+                Rotacion2=3;
+                break;
+            case 3:
+                
+                if(LastRota==1){
+                
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon);
+                this.add(labelPieza2);
+                Rotacion2=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza2=new JLabel();
+                labelPieza2.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza2.addMouseListener(this);
+                labelPieza2.addMouseMotionListener(this);
+                labelPieza2.setIcon(icon2);
+                this.add(labelPieza2);
+                Rotacion2=2;
+                break;
+                }
+            default:
+                break;
+        }
+        }
+        
+        if(piezaSeleccionada==3){
+        
+        int xd= labelPieza3.getLocation().x;
+        int yd =labelPieza3.getLocation().y;
+        this.remove(labelPieza3);
+        
+        switch (Rotacion3) {
+            case 0:
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon3);
+                this.add(labelPieza3);
+                Rotacion3=1;
+                break;
+            case 1:
+                
+                if(LastRota==0){
+                
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon);
+                this.add(labelPieza3);
+                Rotacion3=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon2);
+                this.add(labelPieza3);
+                Rotacion3=2;
+                break;
+                }
+            case 2:
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon1);
+                this.add(labelPieza3);
+                Rotacion3=3;
+                break;
+            case 3:
+                
+                if(LastRota==1){
+                
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon);
+                this.add(labelPieza3);
+                Rotacion3=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza3=new JLabel();
+                labelPieza3.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza3.addMouseListener(this);
+                labelPieza3.addMouseMotionListener(this);
+                labelPieza3.setIcon(icon2);
+                this.add(labelPieza3);
+                Rotacion3=2;
+                break;
+                }
+            default:
+                break;
+        }
+        }
+        
+        if(piezaSeleccionada==4){
+        
+        int xd= labelPieza4.getLocation().x;
+        int yd =labelPieza4.getLocation().y;
+        this.remove(labelPieza4);
+        
+        switch (Rotacion4) {
+            case 0:
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon3);
+                this.add(labelPieza4);
+                Rotacion4=1;
+                break;
+            case 1:
+                
+                if(LastRota==0){
+                
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon);
+                this.add(labelPieza4);
+                Rotacion4=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon2);
+                this.add(labelPieza4);
+                Rotacion4=2;
+                break;
+                }
+            case 2:
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,altoPanel,anchoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon1);
+                this.add(labelPieza4);
+                Rotacion4=3;
+                break;
+            case 3:
+                
+                if(LastRota==1){
+                
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon);
+                this.add(labelPieza4);
+                Rotacion4=0;
+                break;
+                }
+                
+                else{
+                    
+                labelPieza4=new JLabel();
+                labelPieza4.setBounds(xd,yd,anchoPanel, altoPanel);
+                labelPieza4.addMouseListener(this);
+                labelPieza4.addMouseMotionListener(this);
+                labelPieza4.setIcon(icon2);
+                this.add(labelPieza4);
+                Rotacion4=2;
+                break;
+                }
+            default:
+                break;
+        }
+        }
+        
         
         LastRota=1;
         repaint();
     }
-    
     
     
     @Override

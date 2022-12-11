@@ -25,6 +25,21 @@ public class PanelBotones extends JPanel{
     }   
      
     public void Botones(){
+        JButton PiezaEleccion = new JButton("Pieza 1");
+        JButton PiezaEleccion2 = new JButton("Pieza 2");
+        JButton PiezaEleccion3 = new JButton("Pieza 3");
+        JButton PiezaEleccion4 = new JButton("Pieza 4");
+        
+        PiezaEleccion.addActionListener(PE);
+        PiezaEleccion2.addActionListener(PE2);
+        PiezaEleccion3.addActionListener(PE3);
+        PiezaEleccion4.addActionListener(PE4);
+        
+        this.add(PiezaEleccion);
+        this.add(PiezaEleccion2);
+        this.add(PiezaEleccion3);
+        this.add(PiezaEleccion4);
+        
         JButton RotarIzq=new JButton("Rotar 90 izquierda");
         RotarIzq.addActionListener(RIzq);
         this.add(RotarIzq);
@@ -40,8 +55,42 @@ public class PanelBotones extends JPanel{
         JButton BotonJuego=new JButton("Modo Juego");
         BotonJuego.addActionListener(Juegoraccion);
         this.add(BotonJuego);
+        
+        
  
     }
+    
+    ActionListener PE=new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            PanelPrincipal.getInstancia().setPiezaelegir(1);
+        }
+    };
+    
+    ActionListener PE2=new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            PanelPrincipal.getInstancia().setPiezaelegir(2);
+        }
+    };
+    
+    ActionListener PE3=new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            PanelPrincipal.getInstancia().setPiezaelegir(3);
+        }
+    };
+    
+    ActionListener PE4=new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            PanelPrincipal.getInstancia().setPiezaelegir(4);
+        }
+    };
     
     ActionListener RIzq=new ActionListener() {
         @Override
