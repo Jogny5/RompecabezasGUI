@@ -1,6 +1,7 @@
 package rompecabezas_gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Polygon;
@@ -58,11 +59,15 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     public int anchoPanel=450;
     public int altoPanel=250;        
     
+    public int pieza1terminada=0;
+    public int pieza2terminada=0;
+    public int pieza3terminada=0;
+    public int pieza4terminada=0;
+    
     public int pieza1estado=0;
     public int pieza2estado=0;
     public int pieza3estado=0;
     public int pieza4estado=0;
-    public int PiezaMasPequena;             //si es 0 escoge la izquierda, 1 la derecha
     
     private Polygon p1;
     private Polygon p2;
@@ -74,6 +79,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     public JLabel labelPieza3;
     public JLabel labelPieza4;
     
+    public JLabel labelfinal;
     
     ImageIcon icon = new ImageIcon(img);
     ImageIcon icon1 = new ImageIcon(img1);
@@ -99,7 +105,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         this.setBackground(Color.white);
         //this.addMouseListener(this);
         
-        
+        labelfinal=new JLabel("Fin del juego");
+        labelfinal.setBounds(-600,100, 400, 100);
+        labelfinal.setFont(new Font("arial",Font.PLAIN,50));
+        this.add(labelfinal);
+                
         label=new JLabel();
         label.setBounds(xImagenPanel, yImagenPanel, anchoPanel, altoPanel);
         label.setIcon(icon);
@@ -149,6 +159,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     
     public void paint(Graphics g){
         super.paint(g);
+        
+        g.drawRect(xImagenPanel, yImagenPanel, anchoPanel, altoPanel);
+        g.drawImage(img, xImagenPanel, yImagenPanel, anchoPanel, altoPanel,this); 
         //pintar las piezas una vez las 4 esten hechas
         if(L1x2!=-1 && pieza2estado==1){
             
@@ -164,9 +177,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             g.fillPolygon(p4);
             g.drawPolygon(p4);
         }
-        
-        g.drawRect(xImagenPanel, yImagenPanel, anchoPanel, altoPanel);
-        g.drawImage(img, xImagenPanel, yImagenPanel, anchoPanel, altoPanel,this);        
+        if(pieza1terminada==1 && pieza2terminada==1 && pieza3terminada==1 && pieza4terminada==1){
+            labelfinal.setLocation(500,100);
+            
+        }
+               
         
         g.setColor(Color.blue);
         if(L1x2>=0){
@@ -232,14 +247,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
     }
     
-public void dividirPiezas(){
+    public void dividirPiezas(){
        
         //sacar las 4 figuras 
         
         //idea partir desde x1,y1 recorriendo por el borde hasta llegar a x2,y2
-        if(L1y2<L1y1){
-            PiezaMasPequena=1;      //0 a la izquerda 1 a la derecha
-        }
     
         //si L1 empieza abajo y L2 empieza arriba
         if(L1y1>intersecciony && L2y1<intersecciony && pieza2estado!=0){
@@ -2682,7 +2694,52 @@ public void dividirPiezas(){
 
     @Override
     public void mouseReleased(MouseEvent e) {
-         
+        int x = labelPieza1.getLocation().x;
+        int y = labelPieza1.getLocation().y;
+        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 && Rotacion==0) {
+            
+            labelPieza1.setLocation(-500, 0);
+            p1.translate(-1000, 0);
+            pieza1terminada=1;
+            System.out.println("pieza 1 lista");
+        }
+        x = labelPieza2.getLocation().x;
+        y = labelPieza2.getLocation().y;
+        
+        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 && Rotacion==0) {
+            
+            labelPieza2.setLocation(-500, 0);
+            p2.translate(-1000, 0);
+            pieza2terminada=1;
+            System.out.println("pieza 2 lista");
+        }
+        
+        x = labelPieza3.getLocation().x;
+        y = labelPieza3.getLocation().y;
+        
+        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 && Rotacion==0) {
+            
+            labelPieza3.setLocation(-500, 0);
+            p3.translate(-1000, 0);
+            pieza3terminada=1;
+            System.out.println("pieza 3 lista");
+        }
+        x = labelPieza4.getLocation().x;
+        y = labelPieza4.getLocation().y;
+        
+        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 && Rotacion==0) {
+            
+            labelPieza4.setLocation(-500, 0);
+            p4.translate(-1000, 0);
+            pieza4terminada=1;
+            System.out.println("pieza 4 lista");
+        }
+        
+        repaint();
+        
+        
+
+                
         initialClick = null;
         
     }
