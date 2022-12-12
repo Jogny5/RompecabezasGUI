@@ -1,12 +1,19 @@
 package rompecabezas_gui;
 import java.awt.Point;
 import java.awt.Polygon;
+
+/**
+ * 
+ * @author Jorge
+ * @author Diego
+ */
 public class Angular {
     /**
      * obtiene un nuevo punto a una cierta distancia y angulo desde la horizontal
      * @param uno: punto actual
      * @param r: radio en pixeles
      * @param alfaGiro: angulo desde la horizontal en PI radianes
+     * @return 
      * @return: punto nuevo
      */
     public  static Point generaPunto(Point uno, double r, double alfaGiro){    
@@ -19,6 +26,7 @@ public class Angular {
      *
      * @param uno: punto de referencia
      * @param dos: otro punto
+     * @return 
      * @return: el ángulo con respecto a la horizontal
      */
     public static float anguloPI(Point uno, Point dos){

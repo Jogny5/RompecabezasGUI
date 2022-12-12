@@ -1,5 +1,9 @@
 package rompecabezas_gui;
 import java.awt.*;
+/**
+ * @author Jorge
+ * @author Diego
+ */
 public class RellenaConPuntos {
     /**
      *
