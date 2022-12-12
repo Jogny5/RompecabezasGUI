@@ -8,8 +8,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Jorge
+ * @author Diego
+ */
+
 public class PanelBotones extends JPanel{
-        
+    /**
+     * Inicializa el panel de los botones
+     */    
     public PanelBotones(){
         
         this.setLayout(new FlowLayout());
@@ -18,12 +26,17 @@ public class PanelBotones extends JPanel{
         Botones();     
     }
     
-    
+    /**
+     * 
+     * @param g 
+     */
     public void paint(Graphics g){
         super.paint(g);
         
     }   
-     
+    /**
+     * Crea todos los botones 
+     */ 
     public void Botones(){
         JButton PiezaEleccion = new JButton("Pieza 1");
         JButton PiezaEleccion2 = new JButton("Pieza 2");

@@ -5,7 +5,11 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
+/**
+ * 
+ * @author Jorge
+ * @author Diego
+ */
 public class Ventana extends JFrame{
     
     private static final Ventana instancia = new Ventana();
@@ -27,12 +31,17 @@ public class Ventana extends JFrame{
         this.setVisible(true);
         
     }
-    
+    /**
+     * 
+     * @return Devuelve una instancia de la ventana
+     */
     public static Ventana getInstancia(){
         
         return instancia;
     }
-    
+    /**
+     * Funcion para poder cambiar a modo de juego en el panelprincipal
+     */
     public void ModoJuego(){
         
         this.remove(principal);
@@ -41,7 +50,9 @@ public class Ventana extends JFrame{
         
         repaint();
     }
-    
+    /**
+     * Funcion para poder cambiar a modo de editor en el panelprincipal
+     */
     public void ModoEditor(){
         
         this.remove(principal);

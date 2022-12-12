@@ -19,6 +19,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * @author jorge
+ * @author diego
+ */
 
 public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionListener{
     
@@ -46,7 +50,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     public int interseccionx=-1;
     public int intersecciony=-1;
     
-    public int xImagen=10;      //pieza 1 random
+    public int xImagen=10;      
     public int yImagen=10;
     public int xImagen2=380;
     public int yImagen2=10;
@@ -54,8 +58,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     public int yImagen3=10;
     public int xImagen4=700;
     public int yImagen4=400;
-    public int xImagenPanel=200;            //115
-    public int yImagenPanel=400;            //300
+    public int xImagenPanel=200;            
+    public int yImagenPanel=400;            
     public int anchoPanel=450;
     public int altoPanel=250;        
     
@@ -99,6 +103,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     int icy1;
     int count=0;
     
+    /**
+     * Inicializa el panel y los label de las piezas
+     */
     int piezaSeleccionada=1;
     
     public PanelPrincipal(){
@@ -152,18 +159,27 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         Linea2=new Polygon();
         
     }
-    
+    /**
+     * 
+     * @return Una instancia de panelprincipal
+     */
     public static PanelPrincipal getInstancia(){
         
         return instancia;
     }
     
+
     public void setPiezaelegir(int x){
         
         piezaSeleccionada=x;
     }
     
-    
+  
+
+    /**
+     * 
+     * @param g Son todos los graficos que usan
+     */
     public void paint(Graphics g){
         super.paint(g);
         
@@ -192,7 +208,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
         g.setColor(Color.blue);
         if(L1x2>=0){
-            //g.drawLine(L1x1, L1y1, L1x2, L1y2);
             g.setColor(Color.red);
             g.drawPolygon(Linea1);
             
@@ -207,7 +222,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
         }
     }
-    
+    /**
+     * Calcula la interseccion entre 2 lineas
+     */
     public void interseccion(){
         System.out.println(pieza2estado);
         if(pieza2estado!=0){
@@ -253,20 +270,18 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         dividirPiezas();
         
     }
-    
+    /**
+     * Crea 4 piezas separadas por las 2 lineas hechas tomando todos los posibles casos de lineas
+     */
     public void dividirPiezas(){
        
         //sacar las 4 figuras 
         
-        //idea partir desde x1,y1 recorriendo por el borde hasta llegar a x2,y2
-    
-        //si L1 empieza abajo y L2 empieza arriba
+        
+        //Primer caso principal
         if(L1y1>intersecciony && L2y1<intersecciony && pieza2estado!=0){
-            //ver si l1y1 esta en laparte de abajo
             if(L1y1>=intersecciony+yImagen-yImagenPanel){
-                //si uno toca la izquierda
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
-                    //si ambos tocan la izquierda
                     if(L1x1==xImagenPanel && L2x1==xImagenPanel){
                         p1.addPoint(xImagen, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -290,7 +305,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                             p3.addPoint(xImagen3, yImagen3);
-                            System.out.println("cvvcbbvc 1111");
                         }else{
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
@@ -305,7 +319,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                             p3.addPoint(xImagen3, yImagen3);
-                            System.out.println("xccxxccx 1111");
                         }
                        
                      
@@ -316,7 +329,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         
-                        System.out.println("dddddd 1111");
                     }else if(L1x1==xImagenPanel){
                         p1.addPoint(xImagen, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -340,7 +352,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                             p3.addPoint(xImagen3, yImagen3);
-                            System.out.println("kokookko 111");
                         }else{
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
@@ -355,7 +366,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                             p3.addPoint(xImagen3, yImagen3);
-                            System.out.println("fasfsaafs 111");
                         }
                         
                         
@@ -365,9 +375,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         
-                        //chequeado*********
                         
-                        System.out.println("lllpplpplplp 111");
                     }else if(L2x1==xImagenPanel){
                         p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -384,7 +392,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            //check
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
@@ -392,7 +399,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(L1x2+xImagen3-xImagenPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3, yImagen3);
                             
-                            //check
                             p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -400,15 +406,15 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(L1x2+xImagen4-xImagenPanel, yImagen4);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         
-                            System.out.println("uyuyuyuyuy");
-                        }else{//chequeado
+                        }else{
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
                             p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
-                            //check
+
+
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
@@ -417,24 +423,22 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                             p3.addPoint(xImagen3, yImagen3);
                             
-                            //check
+                            
                             p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         
-                            System.out.println("yttytytyty");
                         }
                         
                         
-                        System.out.println("rrrrr 111"); 
                     }else{
-                        System.out.println("caso otro 1111");
+                        System.out.println("falta otro caso 1111");
                     }
                     
-                }else{//ninguno topa la izquierda
-                    //chek
+                }else{
+                    
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen);
@@ -442,7 +446,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                     
                     if(L1x2==xImagenPanel+anchoPanel && L2x2==xImagenPanel+anchoPanel){
-                        //check
+
                         p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
@@ -450,7 +454,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
                         p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                         
-                        //check
+
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
@@ -459,7 +463,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         p3.addPoint(xImagen3, yImagen3);
                         
-                        //check
+
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -467,9 +471,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(L2x1+xImagen4-xImagenPanel, yImagen4);
                         
-                        System.out.println("qqqqqwqw");
                     }else if(L1x2==xImagenPanel+anchoPanel){
-                        //check
+
                         p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
@@ -478,7 +481,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                         p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
                         
-                        //check
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+altoPanel);
                         p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
@@ -486,7 +488,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         p3.addPoint(xImagen3, yImagen3);
                         
-                        //check
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -494,9 +495,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(L2x1+xImagen4-xImagenPanel, yImagen4);
                         
-                        System.out.println("asasassa11");
                     }else if(L2x2==xImagenPanel+anchoPanel){
-                        //checked
+
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
                         p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -504,7 +504,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                         p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+L2y2-yImagenPanel);
                         
-                        //check
+
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
@@ -512,7 +512,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p3.addPoint(L1x2+xImagen3-xImagenPanel, yImagen3+L1y2-yImagenPanel);
                         p3.addPoint(xImagen3, yImagen3);
                         
-                        //check
+
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -522,9 +522,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(L2x1+xImagen4-xImagenPanel, yImagen4);
                         
                         
-                        System.out.println("lolo100");
-                    }else{//no extremos derecha izquierda
-                        //checked
+                    }else{
+
                         p2.addPoint(xImagen2, yImagen2+altoPanel);
                         p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
                         p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
@@ -533,14 +532,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
                         
-                        //check
+
                         p3.addPoint(xImagen3, yImagen3);
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+altoPanel);
                         p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                         p3.addPoint(L1x2+xImagen3-xImagenPanel, yImagen3);
 
-                        //check
+
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -549,23 +548,19 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(L2x1+xImagen4-xImagenPanel, yImagen4);
                         
-                        System.out.println("vfvfvfvf11");
                     }
                     
-                    
-                    System.out.println("caso no extremos izq y derecha");
                 }
                 
             } 
             
             
-        //******************************* parte 2   
+        //Segundo caso principal   
         }else if(L1y1<intersecciony && L2y1>intersecciony && pieza2estado!=0){
             if(L2y1>=intersecciony+yImagen-yImagenPanel){
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
-                    //si ambos tocan la izquierda
                     if(L1x1==xImagenPanel && L2x1==xImagenPanel){
-                        //check
+                        
                         p1.addPoint(xImagen, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen);
@@ -574,16 +569,15 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                         p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                         
-                        //check
-                        if(L2x2!=xImagenPanel+anchoPanel){//x2 arriba
-                            //check
+                        if(L2x2!=xImagenPanel+anchoPanel){
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
                             p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            //check
+
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
@@ -591,7 +585,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3);
                             p3.addPoint(xImagen3, yImagen3);
                             
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -599,10 +593,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                            
-                            System.out.println("cvvcbbvc 222222");
                         
-                        }else{//L2x2 en la derecha
-                            //check
+                        }else{
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
@@ -610,7 +603,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
                             
-                            //check
+
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
@@ -619,18 +612,16 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                             p3.addPoint(xImagen3, yImagen3);
                             
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
-                            System.out.println("xccxxccx 222");
                             
                         }
                         
-                        System.out.println("dddddd 22222");
-                    }else if(L1x1==xImagenPanel){//L1x1 toca la izquierda y L2 empieza abajo
+                    }else if(L1x1==xImagenPanel){
                         
                         p1.addPoint(xImagen+L2x1-xImagenPanel, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -666,8 +657,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             
                             System.out.println("xccxxccx 222");
                             
-                        }else{//L2x2 arriba
-                            //check
+                        }else{
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
@@ -675,7 +666,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            //check
+
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
@@ -683,7 +674,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+L2y2-yImagenPanel);
                             p3.addPoint(xImagen3, yImagen3);
                             
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -691,7 +682,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             
-                            System.out.println("ggdsgdsgsgds 222");
                             
                         }
                         
@@ -704,18 +694,18 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(xImagen, yImagen+L2y1-yImagenPanel);
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                         
-                        //*****
+                        
                         if(L2x2==xImagenPanel+anchoPanel){
                             
                             if(L1x2==xImagenPanel+anchoPanel){
-                                //check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
                                 p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                                //check
+
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
@@ -723,9 +713,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3);
-                                System.out.println("pipipip 222");
+
                             }else{
-                                //check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+anchoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
@@ -734,18 +724,18 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
 
                             
-                                //check
+
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3);
-                                System.out.println("bttbtbtb 222");
+
                             }
                             
                             
-                            // check
+
                             p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -753,26 +743,26 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                             
-                        }else{//L2x2 arriba
+                        }else{
                             
                             if(L1x2==xImagenPanel+anchoPanel){
-                                //check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
                                 p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                                //check
+
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3, yImagen3);
-                                System.out.println("bwbwbwbwwb 222");
+
                             }else{
-                                //check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -781,18 +771,15 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
                                 
-                                //check
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+L1y2-yImagenPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3, yImagen3);
-                                System.out.println("bzzbzb 222");
+
                             }
                             
                             
-                            
-                            //check
                             p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -803,21 +790,20 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             
                         }
                         
-                        System.out.println("rrrr 2222");
+
                     }else{
-                        System.out.println("caso otro2222");
+                        System.out.println("otro caso 2");
                     }
                     
                 }else if(L1x2==xImagenPanel+anchoPanel &&  L2x2==xImagenPanel+anchoPanel){
-                    //ninguno topa la izquierda
-                    //check
+
                     p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+anchoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen);
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen);
                     p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                     
-                    //check
+
                     p2.addPoint(xImagen2+anchoPanel, yImagen2);
                     p2.addPoint(xImagen2, yImagen2);
                     p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -825,7 +811,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                     p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
 
-                    //check
+
                     p3.addPoint(xImagen3, yImagen3+altoPanel);
                     p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                     p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
@@ -834,7 +820,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p3.addPoint(xImagen3+anchoPanel, yImagen3);
                     p3.addPoint(xImagen3, yImagen3);
                     
-                    //check
+
                     p4.addPoint(xImagen4, yImagen4);
                     p4.addPoint(xImagen4, yImagen4+altoPanel);
                     p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -843,21 +829,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                     
                    
-                    System.out.println("bzzbzb 222");
-                    
-                    
-                    
-                    System.out.println("ddddmmmmdd2222");
-                    
-                    
-                }else if(L2x2==xImagenPanel+anchoPanel){//L2x2==xImagenPanel
+                }else if(L2x2==xImagenPanel+anchoPanel){
                     p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen);
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen);
                     p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                     
-                    //check
+
                     p2.addPoint(xImagen2+anchoPanel, yImagen2);
                     p2.addPoint(xImagen2, yImagen2);
                     p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -866,7 +845,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
                     p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                    //check
+
                     p3.addPoint(xImagen3, yImagen3+altoPanel);
                     p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
                     p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
@@ -874,7 +853,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p3.addPoint(xImagen3+anchoPanel, yImagen3);
                     p3.addPoint(xImagen3, yImagen3);
                     
-                    //check
+
                     p4.addPoint(xImagen4, yImagen4);
                     p4.addPoint(xImagen4, yImagen4+altoPanel);
                     p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -882,7 +861,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                     p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                     
-                    System.out.println("caso chccchhcc");
+
                 }else if(L1x2==xImagenPanel+anchoPanel){
                     p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -890,7 +869,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen);
                     p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                     
-                    //check
+
                     p2.addPoint(xImagen2+anchoPanel, yImagen2);
                     p2.addPoint(xImagen2, yImagen2);
                     p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -898,7 +877,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                     p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+L1y2-yImagenPanel);
 
-                    //check
+
                     p3.addPoint(xImagen3, yImagen3+altoPanel);
                     p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                     p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+L1y2-yImagenPanel);
@@ -907,7 +886,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p3.addPoint(xImagen3, yImagen3);
 
                     
-                    //check
+
                     p4.addPoint(xImagen4, yImagen4);
                     p4.addPoint(xImagen4, yImagen4+altoPanel);
                     p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -917,7 +896,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                     
                     
-                    System.out.println("ctedgg");
                 }else{
                     p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -925,7 +903,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen);
                     p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                     
-                    //check
+
                     p2.addPoint(xImagen2+anchoPanel, yImagen2);
                     p2.addPoint(xImagen2, yImagen2);
                     p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -934,7 +912,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+L1y2-yImagenPanel);
                     p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                    //check
+
                     p3.addPoint(xImagen3, yImagen3+altoPanel);
                     p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
                     p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
@@ -942,7 +920,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p3.addPoint(xImagen3, yImagen3);
 
                     
-                    //check
+
                     p4.addPoint(xImagen4, yImagen4);
                     p4.addPoint(xImagen4, yImagen4+altoPanel);
                     p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -952,28 +930,24 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                     
                     
-                    System.out.println("jkjkjkjk22");
                 }
             }
             
-            System.out.println("rarraarra22222");
-            
-            //checked*******************
             
             
             
-            //******* parte 3
             
+        //Caso principal 3
         }else if(L2y1>intersecciony && L1y1>intersecciony && pieza2estado!=0){
             if(L2y1>=intersecciony+yImagen-yImagenPanel){
                 
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
-                    //si ambos tocan la izquierda
+
                     if(L1x1==xImagenPanel && L2x1==xImagenPanel){
                         
                         if(L1y2==yImagenPanel && L2y2==yImagenPanel){
                             if(L1x2>L2x2){
-                                // check
+
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen);
@@ -981,7 +955,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(xImagen, yImagen+L1y1-yImagenPanel);
                                 
-                                // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -990,7 +964,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+L2y1-yImagenPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
@@ -998,7 +972,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 
                                 
                     
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1007,11 +981,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
                     
-
-                                System.out.println("hgmmhgmhgm3333");
                                 
                             }else{
-                                // check
+
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen);
@@ -1032,7 +1004,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3);
                                 
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1041,10 +1013,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
                                 
-                                System.out.println("uyeteherhe333333");
+
                             }
                         }else if(L1y2==yImagenPanel){
-                            //check
+
                             p1.addPoint(xImagen, yImagen+altoPanel);
                             p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                             p1.addPoint(xImagen+anchoPanel, yImagen);
@@ -1052,7 +1024,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(xImagen, yImagen+L2y1-yImagenPanel);
                                 
-                            //check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -1061,7 +1033,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                            //check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+L1y1-yImagenPanel);
                             p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
@@ -1069,7 +1041,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                               
                                 
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1077,9 +1049,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
                                                
-                            System.out.println("fbfdbfdbfdndnjyj333");
+
                         }else if(L2y2==yImagenPanel){
-                            //check
+
                             p1.addPoint(xImagen, yImagen+altoPanel);
                             p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                             p1.addPoint(xImagen+anchoPanel, yImagen);
@@ -1087,7 +1059,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(xImagen, yImagen+L1y1-yImagenPanel);
                                 
-                            //check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1096,14 +1068,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                            //check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+L2y1-yImagenPanel);
                             p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                               
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1120,7 +1092,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(xImagen, yImagen+L2y1-yImagenPanel);
                                 
-                                //check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -1129,14 +1101,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                                //check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+L1y1-yImagenPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                               
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1144,7 +1116,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4);
-                                System.out.println("vbmvbm3333");
+
                             }else{
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1152,7 +1124,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(xImagen, yImagen+L1y1-yImagenPanel);
                                 
-                                //check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1161,14 +1133,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                                //check
+                                
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+L2y1-yImagenPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                               
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1177,12 +1149,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4);
                                 
-                                System.out.println("PPPmbvmvm333");
                             }
                             
                         }
                         
-                        System.out.println("dddddd3333");
                     }else if(L1x1==xImagenPanel){
                         if(L1y2==yImagenPanel){
                             p1.addPoint(xImagen, yImagen+altoPanel);
@@ -1192,7 +1162,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                             
-                            //no check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1200,14 +1170,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                            //no check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3+altoPanel);
                             p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                             p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3);
                        
-                            //no check
+
                             p4.addPoint(xImagen4, yImagen4);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1216,7 +1186,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
                                 
-                            System.out.println("nununu3333");
+
                         }else{
                             if(L2y2==yImagenPanel){
                                 p1.addPoint(xImagen, yImagen+altoPanel);
@@ -1233,7 +1203,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                                //no check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3+altoPanel);
@@ -1241,14 +1211,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                        
-                                //no check
+
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
-                                System.out.println("ajaja333");
+
                             }else{
                                 
                                 p1.addPoint(xImagen, yImagen+altoPanel);
@@ -1257,7 +1227,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(xImagen, yImagen+L1y1-yImagenPanel);
                                 
-                                //check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1265,7 +1235,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3+altoPanel);
@@ -1273,7 +1243,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                        
-                                //no check
+
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1281,13 +1251,12 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4);
-                                System.out.println("ajaja333");
 
+                                
                             }
                         }
                         
-                        System.out.println("cvcvczzzz 3333");
-                        // lo contrario 
+
                     }else if(L2x1==xImagenPanel){
                         if(L2y2==yImagenPanel){
                             p1.addPoint(xImagen, yImagen+altoPanel);
@@ -1297,7 +1266,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+L2y1-yImagenPanel);
                             
-                            //no check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -1305,14 +1274,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L1x1-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                            //no check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3+altoPanel);
                             p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                             p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3);
                        
-                            //no check
+
                             p4.addPoint(xImagen4, yImagen4);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1321,8 +1290,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
                                 
-                            System.out.println("berthe333");
-                        }else{//no cambios
+
+                        }else{
                             if(L1y2==yImagenPanel){
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1338,7 +1307,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L1x1-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3+altoPanel);
@@ -1346,14 +1315,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                        
-                                // check
+
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
-                                System.out.println("resaaeae333");
+
                             }else{
                                 
                                 p1.addPoint(xImagen, yImagen+altoPanel);
@@ -1362,7 +1331,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(xImagen, yImagen+L2y1-yImagenPanel);
                                 
-                                //check
+                                
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -1370,15 +1339,15 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L1x1-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3+altoPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                       
-                                //check
+                                                      
+                                
                                 p4.addPoint(xImagen4, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1386,28 +1355,25 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4);
-                                System.out.println("gfdhgfdhgfd33333");
 
                             }
                         }
                         
-                        System.out.println("rrrrr3333");
-                    }else{
-                        System.out.println("caso otro3333");
-                    }///cambiado
-                    //estan los 2 comienzos abajo
+                    }
+                    
+                    
                 }else if(L1x2==xImagenPanel+anchoPanel || L2x2==xImagenPanel+anchoPanel ){
-                    //tocan arriba o a la derecha
+
                     System.out.println("333uiuih");
                     if(L1x2==xImagenPanel+anchoPanel && L2x2==xImagenPanel+anchoPanel){
                         if(L1x1<L2x1){
-                            //no check
+
                             p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+altoPanel);
                             p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                             p1.addPoint(L2x2+xImagen-xImagenPanel, yImagen);
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             
-                            //no check
+                            
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -1416,7 +1382,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                            //no check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3+altoPanel);
@@ -1424,7 +1390,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                        
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1434,14 +1400,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(xImagen4+anchoPanel, yImagen4);
                             
                             
-                            System.out.println("nnnnnnnnnnnnnnn 333.111");
+
                         }else if(L1x1>L2x1){
                             p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                             p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                             p1.addPoint(L1x2+xImagen-xImagenPanel, yImagen);
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             
-                            //no check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -1450,7 +1416,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L1x1-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                            //no check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3+altoPanel);
@@ -1458,7 +1424,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                        
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4);
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1466,9 +1432,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4);
-                            System.out.println("nnnnnnnnnnnnnnn 333.222");
+
                         }else{
-                            System.out.println("falta caso333.111: ");
+
                         }
                     }else if(L1x2==xImagenPanel+anchoPanel){
                         p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+altoPanel);
@@ -1477,7 +1443,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(L2x2+xImagen-xImagenPanel, yImagen);
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                            
-                        // check
+
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
                         p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -1486,7 +1452,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
                         p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                         
-                        // check
+
                         p3.addPoint(xImagen3, yImagen3);
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3+altoPanel);
@@ -1494,7 +1460,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                         p3.addPoint(xImagen3+anchoPanel, yImagen3);
                        
-                        //check
+
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1502,7 +1468,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
                         
-                        System.out.println("bbbbbbbbbb 3333");
+
                     }else if(L2x2==xImagenPanel+anchoPanel){
                         p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1510,7 +1476,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(L1x2+xImagen-xImagenPanel, yImagen);
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                            
-                        //no check
+
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
                         p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -1519,7 +1485,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(xImagen2+L1x1-xImagenPanel, yImagen2+altoPanel);
                         p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                         
-                        //no check
+
                         p3.addPoint(xImagen3, yImagen3);
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3+altoPanel);
@@ -1527,7 +1493,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                         p3.addPoint(xImagen3+anchoPanel, yImagen3);
                        
-                        //check
+
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1535,10 +1501,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
                         
-                        System.out.println("bbbbbbbbb 3333.2222");
-                    }else{
-                        System.out.println("falta caso 33.22");
+
                     }
+
                        
                 }else{
                     
@@ -1549,7 +1514,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen);
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                            
-                        // check
+
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
                         p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -1558,14 +1523,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
                         p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                        // check
+
                         p3.addPoint(xImagen3, yImagen3);
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3+altoPanel);
                         p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                         p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3);
                   
-                        //check
+
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1573,7 +1538,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
-                        System.out.println("no izq y no dere 3333.11111");
+
                     }else{
                         p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1581,7 +1546,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen);
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                            
-                        // check
+
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
                         p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -1590,14 +1555,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p2.addPoint(xImagen2+L1x1-xImagenPanel, yImagen2+altoPanel);
                         p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                         
-                        // check
+
                         p3.addPoint(xImagen3, yImagen3);
                         p3.addPoint(xImagen3, yImagen3+altoPanel);
                         p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3+altoPanel);
                         p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                         p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3);
                         
-                        //check
+
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -1605,21 +1570,21 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
-                        System.out.println("no izq y no dere 3333.22222");
+
                     }
                     
                             
                 }
             }
             
-            System.out.println("rarraarra 3333");
+
             
             
-        //********* parte 4    
+        //Casos principales 4    
         }else if(L2y1<intersecciony && L1y1<intersecciony && pieza2estado!=0){
             if(L2y1>=intersecciony+yImagen-yImagenPanel){
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
-                    //si ambos tocan la izquierda
+
                     if(L1x1==xImagenPanel && L2x1==xImagenPanel){
                         
                         if(L1y2==yImagenPanel+altoPanel && L2y2==yImagenPanel+altoPanel){
@@ -1632,7 +1597,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L2y1-yImagenPanel);
                                 
-                                // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -1640,7 +1605,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
@@ -1649,16 +1614,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4+altoPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
                             
                                 
-                                
-                                System.out.println("dddddd 4444");
-                            
+                                                            
                             }else{
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1668,7 +1631,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                                 
-                                // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1676,7 +1639,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L2x2-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                                 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+altoPanel);
@@ -1685,7 +1648,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4+altoPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
@@ -1703,7 +1666,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(xImagen, yImagen+L2y1-yImagenPanel);
                                 
-                            // check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -1711,7 +1674,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                               
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
@@ -1719,7 +1682,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
@@ -1735,7 +1698,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(xImagen, yImagen+L1y1-yImagenPanel);
                                 
-                            // check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1743,7 +1706,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L2x2-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                               
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+altoPanel);
@@ -1751,14 +1714,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
                          
-                        }else{//topes izq y dere
+                        }else{
                             if(L1y1>L2y1){
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1768,7 +1731,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(xImagen, yImagen+L2y1-yImagenPanel);
                                 
-                                // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1776,7 +1739,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
 
                                 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
@@ -1785,13 +1748,13 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
-                                System.out.println("vbbbbbbvvv 444");
+
                             }else{
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1801,14 +1764,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(xImagen, yImagen+L2y1-yImagenPanel);
                                 
-                                // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
                                 p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
@@ -1817,13 +1780,13 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
-                                System.out.println("pppllooppolol 444");
+
                             }
                             
                         }
@@ -1838,14 +1801,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                                 
-                                 // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
                                 p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
@@ -1854,7 +1817,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
@@ -1862,7 +1825,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4);
                                 
-                                System.out.println("lllpplpplplp 444");
+
                             }else{
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1871,7 +1834,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                                 
-                                 // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1879,7 +1842,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L2x2-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+altoPanel);
@@ -1887,14 +1850,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4);
-                                System.out.println("reyery 4444");
+
                             }
                         }else{
                             p1.addPoint(xImagen, yImagen+altoPanel);
@@ -1904,7 +1867,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                                 
-                            // check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
@@ -1912,7 +1875,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L2x2-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+altoPanel);
@@ -1921,13 +1884,13 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4+altoPanel);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
                             p4.addPoint(xImagen4, yImagen4);
-                               System.out.println(" fesgfseges 4444");
+
                         }
                         
                     }else if(L2x1==xImagenPanel){
@@ -1940,14 +1903,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                                 
-                                 // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
                                 p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
@@ -1956,7 +1919,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
@@ -1964,7 +1927,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4);
                                 
-                                System.out.println("lllpplpplplp 444");
+
                             }else{
                                 p1.addPoint(xImagen, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -1973,7 +1936,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+L2y1-yImagenPanel);
                                 
-                                 // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -1981,7 +1944,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
@@ -1989,14 +1952,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                                 p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4);
-                                System.out.println("vbvh kvhkhk 4444");
+
                             }
                         }else{
                             p1.addPoint(xImagen, yImagen+altoPanel);
@@ -2006,7 +1969,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+L2y1-yImagenPanel);
                                 
-                            // check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
@@ -2014,7 +1977,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
@@ -2023,16 +1986,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3);
                         
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4+altoPanel);
                             p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                             p4.addPoint(xImagen4, yImagen4);
-                            System.out.println("gjjvjg 4444");
+
                         }
-                    }else{
-                        System.out.println("caso otro 4444");
                     }
                     
                 }else{
@@ -2040,7 +2001,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     if(L1y2==yImagenPanel+altoPanel || L2y2==yImagenPanel+altoPanel){
                         if(L1y2==yImagenPanel+altoPanel && L2y2==yImagenPanel+altoPanel){
                             if(L1x1<L2x1){
-                                //********************************
                                 
                                 p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen);
                                 p1.addPoint(xImagen+anchoPanel, yImagen);
@@ -2048,7 +2008,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p1.addPoint(L2x2+xImagen-xImagenPanel, yImagen+altoPanel);
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 
-                                // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -2057,14 +2017,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4);
@@ -2072,17 +2032,16 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4);
-                                System.out.println("vovovovo 4444");
+
                             }else{
-                                //falta por revisar
+
                                 p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen);
                                 p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                                 p1.addPoint(L1x2+xImagen-xImagenPanel, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                                 p1.addPoint(xImagen+anchoPanel, yImagen);
                                 
-                                
-                                // check
+
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2);
                                 p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -2091,14 +2050,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p2.addPoint(xImagen2+L2x2-xImagenPanel, yImagen2+altoPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                                // check
+
                                 p3.addPoint(xImagen3, yImagen3);
                                 p3.addPoint(xImagen3, yImagen3+altoPanel);
                                 p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+altoPanel);
                                 p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                                 p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3);
                         
-                                //check
+
                                 p4.addPoint(xImagen4, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4);
@@ -2107,10 +2066,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
                                 p4.addPoint(xImagen4, yImagen4);
                                 
-                                System.out.println("pooyfidt 4444");
+
                             }
                         }else if(L2y2==yImagenPanel+altoPanel){
-                            //falta por revisar
+
                             p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen);
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                             p1.addPoint(L2x2+xImagen-xImagenPanel, yImagen+altoPanel);
@@ -2118,7 +2077,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(xImagen+anchoPanel, yImagen);
                                 
                                 
-                            //no check
+
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -2126,7 +2085,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
 
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
@@ -2134,7 +2093,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                             p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3);
                         
-                            //check
+
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4);
@@ -2143,10 +2102,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                             p4.addPoint(xImagen4, yImagen4);
                                 
-                            System.out.println("uddudu 4444");
                             
                         }else if(L1y2==yImagenPanel+altoPanel){
-                            //falta por revisar
+
                             
                             p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen);
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
@@ -2155,7 +2113,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p1.addPoint(xImagen+anchoPanel, yImagen);
                                 
                                 
-                            // check
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -2163,7 +2120,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
 
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
@@ -2180,10 +2137,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(xImagen4, yImagen4);
                        
                             
-                            
-                            //check
-                            
-                            System.out.println("vzzvzv<< 4444");
                         }
                     }else{
                         if(L1x1<L2x1){
@@ -2201,13 +2154,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
 
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
                             p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                             p3.addPoint(xImagen3+L2x1-xImagenPanel, yImagen3);
+                            
                             
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -2219,12 +2173,13 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                        
                             
                             
-                            System.out.println("huug 4444");
+
                         }else{
                             p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen);
                             p1.addPoint(xImagen+anchoPanel, yImagen);
                             p1.addPoint(xImagen+anchoPanel, yImagen+L1y2-yImagenPanel);
                             p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
+                            
                             
                             p2.addPoint(xImagen2, yImagen2);
                             p2.addPoint(xImagen2, yImagen2+altoPanel);
@@ -2234,13 +2189,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                             p2.addPoint(xImagen2+anchoPanel, yImagen2);
 
-                            // check
+
                             p3.addPoint(xImagen3, yImagen3);
                             p3.addPoint(xImagen3, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
                             p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
                             p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
                             p3.addPoint(xImagen3+L1x1-xImagenPanel, yImagen3);
+                            
                             
                             p4.addPoint(xImagen4, yImagen4+altoPanel);
                             p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
@@ -2251,15 +2207,12 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             p4.addPoint(xImagen4, yImagen4);
                        
                             
-                            
-                            System.out.println("shdhhs 4444");
                         }
                     }
                     
                 }
             }
             
-            System.out.println("rarraarra 44444");
         }
         
         if(pieza2estado!=0){
@@ -2273,6 +2226,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
     }
   
+    /**
+     * Rota la pieza hacia la derecha en 90 grados
+     */
     public void RotarDer(){
         
         if(piezaSeleccionada==1){   
@@ -2587,6 +2543,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         repaint();
     }
     
+    /**
+     * Rota la pieza a la izquierda en 90 grados
+     */
     public void RotarIzq(){
             
         if(piezaSeleccionada==1){
