@@ -1,0 +1,31 @@
+Informe Proyecto Rompecabezas
+Grupo 17
+
+Diego Gutiérrez Mendoza
+Jorge Fernández Hermosilla
+
+Patrones utilizados: Singleton
+
+Se utilizo este patron en el panelprincipal solo necesita una instancia y asi se pueden utilizar sus metodos y estos afecten a la unica instancia, 
+lo cual es necesario ya que esa instancia es la que esta integrada en el JFrame Ventana y la que se mostrara cuando se quieran hacer ediciones al rompecabezas
+y cuando se juegue. La instancia se pide para ser utilizada en ventana y PanelBotones, el cual proporciona los botones que permiten jugar, y elegir el modo de juego.
+
+Decisiones tomadas durante el proyecto:
+
+Primero se tuvo que escoger como se iban a modelar los modos del rompecabezas. Al principio cada uno iba a tener un panel correspondiente pero se decidio con utilizar un
+solo panel ya que este tenia todas las variables y metodos necesarios para poder jugar y editar en el, y cambiar su modo solo con un boton. Después para dividir las 
+piezas se utilizó un label el cual registraba los movimientos hechos con el mouse para formar cortes y los aceptara cuando la imagen se dividiera en cuatro piezas.
+
+Para poder mover las piezas se optó por utilizar labeles cuviertos por poligonos que tapaban el resto de la imagen para que tan solo se viera la parte que correspondería 
+a la pieza, y que cuando el mouse clickeara solo donde estuviera la parte visible de la imagen y se arrastrara, la imagen se moviera con este. Para que el juego
+estuviera completado, se revisa la posición de los labeles y cuando están en el lugar que corresponde al marco del rompecabezas estos estarían ¨puestos¨ en su lugar,
+y cuando estuvieran los 4 labeles en su lugar, el juego concluiría.
+
+Problemas encontrados:
+
+Se dificultó encontrar un método para dividir el label, ya que como podrían ser figuras irregulares, se deberían formar piezas con polígonos irregulares lo cual
+no supimos como hacerlo, por lo cual optamos por cubir la imagen y darle la forma de pieza. También se dificulto mover las piezas, ya que no encontramos métodos 
+para mover imagenes que fueran dibujadas en el programa, por lo cual optamos por los labeles y agregarle iconos que funcionaran como la imagen y pieza.
+
+Lo más problemático era encontrar un método para poder rotar los polígonos que darian forma a la pieza para que cuando el label fuera rotado, el poligono tambien rotara
+con este, a lo cual no pudimos encontrar una solución que funcionara en todos los casos que nos resultaban al dividir las piezas de distintas maneras. 
