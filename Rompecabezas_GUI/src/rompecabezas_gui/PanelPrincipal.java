@@ -355,43 +355,101 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                         
                         if(L2x2!=xImagenPanel+anchoPanel){
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
-                            p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                            if(L1x2!=xImagenPanel+anchoPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                                
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+altoPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                                
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                            
+                            }
+                            
+                        // chequeado arriba    
                         }else{
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                            if(L1y2==yImagenPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L1y2-xImagenPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                            
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                            
+                                System.out.println("hdhddhhd");    
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                            
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                            
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                            
+                                System.out.println("yigggig");    
+                            }
+                                             
+
                         }
-                       
-                     
-                        
-                        p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
-                        p4.addPoint(xImagen4, yImagen4+altoPanel);
-                        p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                        p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
-                        p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
-                        
+                    
                     }else if(L1x1==xImagenPanel){
                         p1.addPoint(xImagen, yImagen+altoPanel);
                         p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -402,41 +460,108 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         
                         
                         if(L2x2!=xImagenPanel+anchoPanel){
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
-                            p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                            if(L1y2==yImagenPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
                             
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                                
+                                p4.addPoint(xImagen4, yImagen4);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
+                                
+                                
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                
+                                
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(L2x2+xImagen3-xImagenPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                                
+                                p4.addPoint(xImagen4, yImagen4);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
+                                
+                            }
+                        //chequeado arriba    
                         }else{
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                            if(L1y2==yImagenPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                                
+                                p4.addPoint(xImagen4, yImagen4);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
+                                
+                                
+                                System.out.println("rhryray");
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                            
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                                
+                                p4.addPoint(xImagen4, yImagen4);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
+                                
+                                
+                                System.out.println("óiói");
+                            }
+                            
                         }
                         
                         
-                        p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
-                        p4.addPoint(xImagen4, yImagen4+altoPanel);
-                        p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                        p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
-                        p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         
                         
                     }else if(L2x1==xImagenPanel){
@@ -448,58 +573,114 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
                         
                         if(L1x2!=xImagenPanel+anchoPanel){
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+altoPanel);
-                            p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                            if(L2x2!=xImagenPanel+anchoPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(L1x2+xImagen3-xImagenPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3, yImagen3);
                             
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(L1x2+xImagen3-xImagenPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(L1x2+xImagen4-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
-                            p4.addPoint(xImagen4, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4);
-                            p4.addPoint(L1x2+xImagen4-xImagenPanel, yImagen4);
-                            p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
-                        
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(L1x2+xImagen3-xImagenPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3, yImagen3);
+                            
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(L1x2+xImagen4-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                                
+                            }
+                        //check   
                         }else{
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
-                            p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                            
+                            if(L2x2==xImagenPanel+anchoPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
 
 
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
                             
                             
-                            p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
-                            p4.addPoint(xImagen4, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
-                            p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
-                        
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                                
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+L2x2+-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                            
+                            
+                                p4.addPoint(xImagen4, yImagen4+L2y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                            }
+                            
+                            
                         }
                         
                         
                     }else{
-                        System.out.println("falta otro caso 1111");
+                        System.out.println("falta otro caso 1");
                     }
                     
+                //check    
                 }else{
                     
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+altoPanel);
@@ -534,12 +715,13 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(L2x1+xImagen4-xImagenPanel, yImagen4);
                         
+                        
                     }else if(L1x2==xImagenPanel+anchoPanel){
 
-                        p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
+                        p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
                         p2.addPoint(xImagen2+anchoPanel, yImagen2);
                         p2.addPoint(xImagen2, yImagen2);
-                        p2.addPoint(xImagen2, yImagen2+L1y1-yImagenPanel);
+                        p2.addPoint(xImagen2, yImagen2+altoPanel);
                         p2.addPoint(L1x1+xImagen2-xImagenPanel, yImagen2+altoPanel);
                         p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                         p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
@@ -579,7 +761,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p4.addPoint(xImagen4, yImagen4);
                         p4.addPoint(xImagen4, yImagen4+altoPanel);
                         p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                        p4.addPoint(xImagen4+anchoPanel, yImagen4+L1y2-yImagenPanel);
+                        p4.addPoint(xImagen4+anchoPanel, yImagen4);
                         p4.addPoint(L1x2+xImagen4-xImagenPanel, yImagen4);
                         p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                         p4.addPoint(L2x1+xImagen4-xImagenPanel, yImagen4);
@@ -633,54 +815,110 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+L1y1-yImagenPanel);
                         
                         if(L2x2!=xImagenPanel+anchoPanel){
+                            if(L1y2==yImagenPanel+altoPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
 
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
                             
 
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                                
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
 
-                            p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
-                            p4.addPoint(xImagen4, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4);
-                            p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
-                            p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
-                           
-                        
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                            
+
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                            }
+                            
+                            
+                        //arriba check
                         }else{
-
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
-                            p2.addPoint(L2x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
+                            
+                            if(L1y2==yImagenPanel+altoPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(L1x2+xImagen2-xImagenPanel, yImagen2+altoPanel);
                             
 
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
                             
 
-                            p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
-                            p4.addPoint(xImagen4, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
-                            p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                                System.out.println("qaytyqa");
+                                
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+L2y1-yImagenPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
+                            
+
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
+                            
+
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                                System.out.println("zggzgzg");
+                                
+                            }
+                            
                             
                         }
                         
@@ -694,56 +932,107 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         p1.addPoint(interseccionx+xImagen-xImagenPanel, intersecciony+yImagen-yImagenPanel);
 
                         if(L2x2==xImagenPanel+anchoPanel){
-                            //check
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+altoPanel);
-                            p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            //check
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3);
-                            p3.addPoint(xImagen3, yImagen3);
+                            if(L1y2==yImagenPanel+altoPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
+                                
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
                             
-                            //check
-                            p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
-                            p4.addPoint(xImagen4, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
-                            p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                                                
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
-                            System.out.println("xccxxccx 222");
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
                             
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                
+                            }
+                            
+                            
+                        //arriba check    
                         }else{
+                            
+                            if(L1y2==yImagenPanel+altoPanel){
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p2.addPoint(xImagen2+L1x2-xImagenPanel, yImagen2+altoPanel);
 
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
-                            p2.addPoint(xImagen2+anchoPanel, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2);
-                            p2.addPoint(xImagen2, yImagen2+altoPanel);
-                            p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
-                            p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+L1x2-xImagenPanel, yImagen3+altoPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3);
+                                p3.addPoint(xImagen3, yImagen3);
                             
 
-                            p3.addPoint(xImagen3, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
-                            p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
-                            p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
-                            p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+L2y2-yImagenPanel);
-                            p3.addPoint(xImagen3, yImagen3);
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                            
+                            }else{
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2+L1y2-yImagenPanel);
+                                p2.addPoint(xImagen2+anchoPanel, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2);
+                                p2.addPoint(xImagen2, yImagen2+altoPanel);
+                                p2.addPoint(xImagen2+L2x1-xImagenPanel, yImagen2+altoPanel);
+                                p2.addPoint(interseccionx+xImagen2-xImagenPanel, intersecciony+yImagen2-yImagenPanel);
                             
 
-                            p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
-                            p4.addPoint(xImagen4, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
-                            p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
-                            p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
-                            p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                                p3.addPoint(xImagen3, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+altoPanel);
+                                p3.addPoint(xImagen3+anchoPanel, yImagen3+L1y2-yImagenPanel);
+                                p3.addPoint(interseccionx+xImagen3-xImagenPanel, intersecciony+yImagen3-yImagenPanel);
+                                p3.addPoint(xImagen3+L2x2-xImagenPanel, yImagen3+L2y2-yImagenPanel);
+                                p3.addPoint(xImagen3, yImagen3);
+                            
+
+                                p4.addPoint(xImagen4, yImagen4+L1y1-yImagenPanel);
+                                p4.addPoint(xImagen4, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4+altoPanel);
+                                p4.addPoint(xImagen4+anchoPanel, yImagen4);
+                                p4.addPoint(xImagen4+L2x2-xImagenPanel, yImagen4);
+                                p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
+                            
+
+                            }
+                            
                             
                             
                         }
@@ -860,7 +1149,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     
                 }else if(L1x2==xImagenPanel+anchoPanel &&  L2x2==xImagenPanel+anchoPanel){
 
-                    p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+anchoPanel);
+                    p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen);
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen);
@@ -958,7 +1247,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                     p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                     
-                    
                 }else{
                     p1.addPoint(L2x1+xImagen-xImagenPanel, yImagen+altoPanel);
                     p1.addPoint(xImagen+anchoPanel, yImagen+altoPanel);
@@ -992,13 +1280,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                     p4.addPoint(xImagen4+L1x1-xImagenPanel, yImagen4);
                     
-                    
                 }
             }
             
             
-            
-            
+             
             
         //Caso principal 3
         }else if(L2y1>intersecciony && L1y1>intersecciony && pieza2estado!=0){
