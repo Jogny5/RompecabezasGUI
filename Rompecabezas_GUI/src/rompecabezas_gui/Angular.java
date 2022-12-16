@@ -3,18 +3,23 @@ import java.awt.Point;
 import java.awt.Polygon;
 
 /**
- * 
+ * Clase con operaciones relacionadas a los angulos
  * @author Jorge
  * @author Diego
  */
 public class Angular {
     /**
-     * obtiene un nuevo punto a una cierta distancia y angulo desde la horizontal
-     * @param uno: punto actual
-     * @param r: radio en pixeles
-     * @param alfaGiro: angulo desde la horizontal en PI radianes
-     * @return 
-     * @return: punto nuevo
+     * Constructor de la clase angular
+     */
+    public Angular(){
+    }
+    
+    /**
+     * Obtiene un nuevo punto a una cierta distancia y angulo desde la horizontal
+     * @param uno Punto actual
+     * @param r Radio en pixeles
+     * @param alfaGiro Angulo desde la horizontal en PI radianes
+     * @return Punto nuevo
      */
     public  static Point generaPunto(Point uno, double r, double alfaGiro){    
         int x = (int)((double) uno.x + r*Math.cos(alfaGiro*Math.PI));
@@ -23,11 +28,10 @@ public class Angular {
         return p;
     }
     /**
-     *
-     * @param uno: punto de referencia
-     * @param dos: otro punto
-     * @return 
-     * @return: el ángulo con respecto a la horizontal
+     * Funcion que devuelve el angulo entre 2 puntos
+     * @param uno: Punto de referencia
+     * @param dos: Otro punto
+     * @return El ángulo con respecto a la horizontal
      */
     public static float anguloPI(Point uno, Point dos){
         float angulo,alto,ancho;       
@@ -36,14 +40,22 @@ public class Angular {
         angulo = (float)Math.atan2(-(double)alto,(double)ancho);      
         return angulo/(float)Math.PI;
     }
+    /**
+     * a partir de 2 puntos devuelve el angulo entre elllos
+     * @param x1 Posicion x del primer punto
+     * @param y1 Posicion y del primer punto
+     * @param x2 Posicion x del segundo punto
+     * @param y2 Posicion y del segundo punto
+     * @return El angulo entre los 2 puntos
+     */
     public static float anguloPI(int x1, int y1, int x2, int y2){     
         return anguloPI(new Point(x1,y1),new Point(x2,y2));
     }
     /**
-     * distancia en pixeles entre dos puntos
-     * @param uno
-     * @param dos
-     * @return
+     * Distancia en pixeles entre dos puntos
+     * @param uno Primer punto
+     * @param dos Segundo punto
+     * @return Distancia entre 2 puntos
      */
     public static double distEntre2Puntos(Point uno, Point dos){
         double d=Math.sqrt(
@@ -56,20 +68,20 @@ public class Angular {
     }
     /**
      * Distancia en pixeles entre dos puntos
-     * @param x1
-     * @param y1
-     * @param x2
-     * @param y2
-     * @return
+     * @param x1 Posicion x del primer punto
+     * @param y1 Posicion y del primer punto
+     * @param x2 Posicion x del segundo punto
+     * @param y2 Posicion y del segundo punto
+     * @return Distancia entre 2 puntos
      */
     public static double distEntre2Puntos(int x1, int y1, int x2, int y2){
         return distEntre2Puntos(new Point(x1,y1),new Point(x2,y2));
     }
     /**
      * Multiplicacion matricial de m1 x m2
-     * @param m1
-     * @param m2
-     * @return 
+     * @param m1 Primera matriz
+     * @param m2 Segunda matriz
+     * @return Matriz resultado de la multiplicacion de 2 matrices
      */
     public static double[][] multMatrices(double m1[][],double m2[][]){        
         double m3[][]= new double[m1.length][m2[0].length];        

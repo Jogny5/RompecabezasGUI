@@ -9,7 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- * 
+ * Clase donde estan los botones que cambian los modos de juego
+ * y los botones que rotan las piezas
  * @author Jorge
  * @author Diego
  */
@@ -27,8 +28,8 @@ public class PanelBotones extends JPanel{
     }
     
     /**
-     * 
-     * @param g 
+     * Metodo paint
+     * @param g paint
      */
     public void paint(Graphics g){
         super.paint(g);
@@ -72,7 +73,9 @@ public class PanelBotones extends JPanel{
         
  
     }
-    
+    /**
+     * Boton para seleccionar la pieza 1
+     */
     ActionListener PE=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -80,7 +83,9 @@ public class PanelBotones extends JPanel{
             PanelPrincipal.getInstancia().setPiezaelegir(1);
         }
     };
-    
+    /**
+     * Boton para seleccionar la pieza 2
+     */
     ActionListener PE2=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -88,7 +93,9 @@ public class PanelBotones extends JPanel{
             PanelPrincipal.getInstancia().setPiezaelegir(2);
         }
     };
-    
+    /**
+     * Boton para seleccionar la pieza 3
+     */
     ActionListener PE3=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -96,7 +103,9 @@ public class PanelBotones extends JPanel{
             PanelPrincipal.getInstancia().setPiezaelegir(3);
         }
     };
-    
+    /**
+     * Boton para seleccionar la pieza 4
+     */
     ActionListener PE4=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -104,7 +113,9 @@ public class PanelBotones extends JPanel{
             PanelPrincipal.getInstancia().setPiezaelegir(4);
         }
     };
-    
+    /**
+     * Boton que hace la rotacion hacia la izquierda
+     */
     ActionListener RIzq=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -112,7 +123,9 @@ public class PanelBotones extends JPanel{
             PanelPrincipal.getInstancia().RotarIzq();
         }
     };
-    
+    /**
+     * Boton que hace la rotacion hacia la derecha
+     */
     ActionListener RDer=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -120,7 +133,9 @@ public class PanelBotones extends JPanel{
             PanelPrincipal.getInstancia().RotarDer();
         }
     };
-    
+    /**
+     * Boton que cambia al modo editor
+     */
     ActionListener Editoraccion=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -128,7 +143,9 @@ public class PanelBotones extends JPanel{
             Ventana.getInstancia().ModoEditor();
         }
     };
-    
+    /**
+     * Boton que cambia al modo juego
+     */
     ActionListener Juegoraccion=new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {

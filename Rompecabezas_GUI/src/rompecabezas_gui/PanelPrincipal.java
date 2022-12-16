@@ -20,151 +20,272 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * Clase jpanel donde ocurre el juego
  * @author jorge
  * @author diego
  */
 
 public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionListener{
     
-    /**Instancia a panel principal */
+    /**
+     * Instancia a panel principal 
+     */
     private static final PanelPrincipal instancia = new PanelPrincipal();
-    /**Instancia a modo editor */
+    /**
+     * Instancia a modo editor 
+     */
     private ModoEditor Meditor;
-    /**Instancia a modo juego */
+    /**
+     * Instancia a modo juego 
+     */
     private ModoJuego Mjuego;
-    /** Variable que indica el modo de juego*/
+    /**
+     * Variable que indica el modo de juego
+     */
     private int ModoDeJuego=0;
-    /**Trae imagen para la rotacion*/
+    /**
+     * Trae imagen para la rotacion
+     */
     private Image img = Toolkit.getDefaultToolkit().getImage(PanelPrincipal.class.getResource("/kirby.png"));
-    /**Trae imagen para la rotacion */
+    /**
+     * Trae imagen para la rotacion 
+     */
     private Image img1 = Toolkit.getDefaultToolkit().getImage(PanelPrincipal.class.getResource("/kirby1.png"));
-    /**Trae imagen para la rotacion */
+    /**
+     * Trae imagen para la rotacion 
+     */
     private Image img2 = Toolkit.getDefaultToolkit().getImage(PanelPrincipal.class.getResource("/kirby2.png"));
-    /**Trae imagen para la rotacion */
+    /**
+     * Trae imagen para la rotacion 
+     */
     private Image img3 = Toolkit.getDefaultToolkit().getImage(PanelPrincipal.class.getResource("/kirby3.png"));
-    /**Indica la posicion x del comienzo de la linea 1 */
+    /**
+     * Indica la posicion x del comienzo de la linea 1 
+     */
     public int L1x1;
-    /**Indica la posicion y del comienzo de la linea 1 */
+    /**
+     * Indica la posicion y del comienzo de la linea 1 
+     */
     public int L1y1;
-    /**Indica la posicion x del final de la linea 1 */
+    /**
+     * Indica la posicion x del final de la linea 1 
+     */
     public int L1x2=-1;
-    /** Indica la posicion y del final de la linea 1*/
+    /**
+     * Indica la posicion y del final de la linea 1
+     */
     public int L1y2;
     
-    /**Indica la posicion x del comienzo de la linea 2 */
+    /**
+     * Indica la posicion x del comienzo de la linea 2 
+     */
     public int L2x1;
-    /**Indica la posicion y del comienzo de la linea 2 */
+    /**
+     * Indica la posicion y del comienzo de la linea 2 
+     */
     public int L2y1;
-    /**Indica la posicion x del final de la linea 2 */
+    /**
+     * Indica la posicion x del final de la linea 2 
+     */
     public int L2x2;
-    /**Indica la posicion y del final de la linea 2 */
+    /**
+     * Indica la posicion y del final de la linea 2 
+     */
     public int L2y2;
     
-    /**poligno que hace de una de las lineas que separan la imagen */
+    /**
+     * Poligno que hace de una de las lineas que separan la imagen 
+     */
     private Polygon Linea1;
-    /**poligno que hace de una de las lineas que separan la imagen */
+    /**
+     * Poligno que hace de una de las lineas que separan la imagen 
+     */
     private Polygon Linea2;
     
-    /**Posicion x de la interseccion */
+    /**
+     * Posicion x de la interseccion 
+     */
     public int interseccionx=-1;
-    /**Posicion y de la interseccion */
+    /**
+     * Posicion y de la interseccion 
+     */
     public int intersecciony=-1;
     
-    /**posicion x de la pieza 1 una vez hecha */
+    /**
+     * Posicion x de la pieza 1 una vez hecha 
+     */
     public int xImagen=10;   
-    /**posicion y de la pieza 1 una vez hecha */
+    /**
+     * Posicion y de la pieza 1 una vez hecha 
+     */
     public int yImagen=10;
-    /**posicion x de la pieza 2 una vez hecha */
+    /**Posicion x de la pieza 2 una vez hecha 
+     */
     public int xImagen2=380;
-    /**posicion y de la pieza 2 una vez hecha */
+    /**
+     * Posicion y de la pieza 2 una vez hecha 
+     */
     public int yImagen2=10;
-    /**posicion x de la pieza 3 una vez hecha */
+    /**
+     * Posicion x de la pieza 3 una vez hecha 
+     */
     public int xImagen3=810;
-    /**posicion y de la pieza 3 una vez hecha */
+    /**
+     * Posicion y de la pieza 3 una vez hecha 
+     */
     public int yImagen3=10;
-    /**posicion x de la pieza 4 una vez hecha */
+    /**
+     * Posicion x de la pieza 4 una vez hecha 
+     */
     public int xImagen4=700;
-    /**posicion y de la pieza 4 una vez hecha */
+    /**
+     * Posicion y de la pieza 4 una vez hecha 
+     */
     public int yImagen4=400;
     
-    /**posicion x de la imagen central a la que se le hacen los cortes */
+    /**Posicion x de la imagen central a la que se le hacen los cortes 
+     */
     public int xImagenPanel=200;            
-    /**posicion y de la imagen central a la que se le hacen los cortes */
+    /**Posicion y de la imagen central a la que se le hacen los cortes 
+     */
     public int yImagenPanel=400;
-    /**ancho de la imagen central a la que se le hacen los cortes */
+    /**Ancho de la imagen central a la que se le hacen los cortes 
+     */
     public int anchoPanel=450;
-    /**alto de la imagen central a la que se le hacen los cortes */
+    /**Alto de la imagen central a la que se le hacen los cortes 
+     */
     public int altoPanel=250;        
     
-    /**indica si la pieza 1 ya fue colocada en el rompecabezas y se aceptó */
+    /**
+     * Indica si la pieza 1 ya fue colocada en el rompecabezas y se aceptó 
+     */
     public int pieza1terminada=0;
-    /**indica si la pieza 2 ya fue colocada en el rompecabezas y se aceptó */
+    /**
+     * Indica si la pieza 2 ya fue colocada en el rompecabezas y se aceptó 
+     */
     public int pieza2terminada=0;
-    /**indica si la pieza 3 ya fue colocada en el rompecabezas y se aceptó */
+    /**
+     * Indica si la pieza 3 ya fue colocada en el rompecabezas y se aceptó 
+     */
     public int pieza3terminada=0;
-    /**indica si la pieza 4 ya fue colocada en el rompecabezas y se aceptó */
+    /**
+     * Indica si la pieza 4 ya fue colocada en el rompecabezas y se aceptó 
+     */
     public int pieza4terminada=0;
     
-    /**Indica el estado las lineas para ver si se tienen que hacer de nuevo*/
+    /**
+     * Indica el estado las lineas para ver si se tienen que hacer de nuevo
+     */
     public int pieza1estado=0;
-    /**Indica el estado las lineas para ver si se tienen que hacer de nuevo*/
+    /**
+     * Indica el estado las lineas para ver si se tienen que hacer de nuevo
+     */
     public int pieza2estado=0;
-    /**Indica el estado las lineas para ver si se tienen que hacer de nuevo*/
+    /**
+     * Indica el estado las lineas para ver si se tienen que hacer de nuevo
+     */
     public int pieza3estado=0;
-    /**Indica el estado las lineas para ver si se tienen que hacer de nuevo*/
+    /**
+     * Indica el estado las lineas para ver si se tienen que hacer de nuevo
+     */
     public int pieza4estado=0;
     
-    /**Poligono que tapa la pieza 1 para formar la pieza */
+    /**
+     * Poligono que tapa la pieza 1 para formar la pieza 
+     */
     private Polygon p1;
-    /**Poligono que tapa la pieza 2 para formar la pieza */
+    /**
+     * Poligono que tapa la pieza 2 para formar la pieza 
+     */
     private Polygon p2;
-    /**Poligono que tapa la pieza 3 para formar la pieza */
+    /**
+     * Poligono que tapa la pieza 3 para formar la pieza 
+     */
     private Polygon p3;
-    /**Poligono que tapa la pieza 4 para formar la pieza */
+    /**
+     * Poligono que tapa la pieza 4 para formar la pieza 
+     */
     private Polygon p4;
     
-    /**Label para la imagen central del rompecabezas */
+    /**
+     * Label para la imagen central del rompecabezas 
+     */
     public JLabel label;
-    /**label para la imagen de la pieza 1 */
+    /**
+     * Label para la imagen de la pieza 1 
+     */
     public JLabel labelPieza1;
-    /**label para la imagen de la pieza 2 */
+    /**
+     * Label para la imagen de la pieza 2 
+     */
     public JLabel labelPieza2;
-    /**label para la imagen de la pieza 3 */
+    /**
+     * Label para la imagen de la pieza 3 
+     */
     public JLabel labelPieza3;
-    /**label para la imagen de la pieza 4 */
+    /**
+     * Label para la imagen de la pieza 4 
+     */
     public JLabel labelPieza4;
-    /**label con el mensaje de fin de juego */
+    /**
+     * Label con el mensaje de fin de juego 
+     */
     public JLabel labelfinal;
     
-    /**Imagen rotada */
+    /**
+     * Imagen rotada normal
+     */
     ImageIcon icon = new ImageIcon(img);
-    /**Imagen rotada */
+    /**
+     * Imagen rotada 90 grados
+     */
     ImageIcon icon1 = new ImageIcon(img1);
-    /**Imagen rotada */
+    /**
+     * Imagen rotada 180 grados
+     */
     ImageIcon icon2 = new ImageIcon(img2);
-    /**Imagen rotada */
+    /**
+     * Imagen rotada 270 grados
+     */
     ImageIcon icon3 = new ImageIcon(img3);
     
-    /**Indica en que angulo esta rotada la pieza 1 con 0 igual 0 grados*/
+    /**
+     * Indica en que angulo esta rotada la pieza 1 con 0 igual 0 grados
+     */
     int Rotacion=0;
-    /**Indica en que angulo esta rotada la pieza 2 con 0 igual 0 grados*/
+    /**
+     * Indica en que angulo esta rotada la pieza 2 con 0 igual 0 grados
+     */
     int Rotacion2=0;
-    /**Indica en que angulo esta rotada la pieza 3 con 0 igual 0 grados*/
+    /**
+     * Indica en que angulo esta rotada la pieza 3 con 0 igual 0 grados
+     */
     int Rotacion3=0;
-    /**Indica en que angulo esta rotada la pieza 4 con 0 igual 0 grados*/
+    /**
+     * Indica en que angulo esta rotada la pieza 4 con 0 igual 0 grados
+     */
     int Rotacion4=0;
-    /**Indica la ultima rotacion que fue hecha */
+    /**
+     * Indica la ultima rotacion que fue hecha 
+     */
     int LastRota=0;
     
-    /**Ubicacion del clickeo cuando se va a arrastrar una pieza para que se mueva junto al mouse */
+    /**
+     * Ubicacion del clickeo cuando se va a arrastrar una pieza para que se mueva junto al mouse 
+     */
     Point initialClick;
     
-    /**Guarda la posicion en la que se encontraba el poligono y que cuando se traslade siga correctamente al label */
+    /**
+     * Guarda la posicion en la que se encontraba el poligono y que cuando se traslade siga correctamente al label 
+     */
     int icx1;
-    /**Guarda la posicion en la que se encontraba el poligono y que cuando se traslade siga correctamente al label */    
+    /**
+     * Guarda la posicion en la que se encontraba el poligono y que cuando se traslade siga correctamente al label 
+     */    
     int icy1;
     /**
-     Indica que se clickeo la pieza y no el poligono alrededor*/
+     Indica que se clickeo la pieza y no el poligono alrededor
+     */
     int count=0;
     
     /**
@@ -172,6 +293,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      */
     int piezaSeleccionada=1;
     
+    /**
+     * Constructor de la clase panelprincipal
+     */
     private PanelPrincipal(){
         
         this.setLayout(null);
@@ -224,14 +348,17 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
     }
     /**
-     * 
+     * Dvuelve una instancia de la propia panelprincipal
      * @return Una instancia de panelprincipal
      */
     public static PanelPrincipal getInstancia(){
         
         return instancia;
     }    
-
+    /**
+     * Clase para definir que pieza esta seleccionada para rotarla
+     * @param x el numero de la pieza para la rotacion
+     */
     public void setPiezaelegir(int x){
         
         piezaSeleccionada=x;
@@ -240,7 +367,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
   
 
     /**
-     * 
+     * Metodo paint
      * @param g Son todos los graficos que usan
      */
     public void paint(Graphics g){
@@ -3222,14 +3349,20 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         repaint();
     }
     
-    
+    /**
+     * Metdo vacio
+     * @param e mouseevent
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
           
             
         
     }
-
+    /**
+     * Metodo usado para seleccionar la pieza a arrrastrar
+     * @param e mouseevent
+     */
     @Override
     public void mousePressed(MouseEvent e) {
             
@@ -3280,7 +3413,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             count=0;
     }
-    
+    /**
+     * Metodo que arrastra la pieza
+     * @param e mouseevent
+     */
     @Override
     public void mouseDragged(MouseEvent e) {
         
@@ -3479,10 +3615,16 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
         
     }
-    
+    /**
+     * Metodo vacio
+     * @param e mouseevent
+     */
     public void mouseMoved(MouseEvent e){
     }
-
+    /**
+     * Meetodo que suelta la pieza arratrada
+     * @param e mouseevent
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         int x = labelPieza1.getLocation().x;
@@ -3535,7 +3677,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
     }
 
-    
+    /**
+     * metodo para crear las lineas que separan las piezas
+     * guardando los puntos de entrada de las lineas 
+     * @param e mouseevent
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
         
@@ -3583,7 +3729,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         }
     }
 
-    
+    /**
+     * Metodo para guardar los puntos finales de las lineas
+     * @param e mouseevent
+     */
     @Override
     public void mouseExited(MouseEvent e) {
         

@@ -6,17 +6,30 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 /**
- * 
+ * Clase jframe donde ocurre el rompecabezas
  * @author Jorge
  * @author Diego
  */
 public class Ventana extends JFrame{
-    
+    /**
+     * Crea una nueva instancia estatica a ventana
+     */
     private static final Ventana instancia = new Ventana();
+    /**
+     * Obtiene la instancia de panelprincipal desde el propio panel principal
+     */
     private JPanel principal = PanelPrincipal.getInstancia();
+    /**
+     * Crea una instancia a modo juego
+     */
     private JPanel mjuego = new ModoJuego();
+    /**
+     * Crea una instancia a modo editor
+     */
     private JPanel meditor = new ModoEditor();
-    
+    /**
+     * Constructor de ventana
+     */
     private Ventana(){
         super();
         setTitle("Rompecabezas"); 
@@ -32,8 +45,8 @@ public class Ventana extends JFrame{
         
     }
     /**
-     * 
-     * @return Devuelve una instancia de la ventana
+     * Devuelve una instancia de la ventana
+     * @return instancia a la ventana
      */
     public static Ventana getInstancia(){
         

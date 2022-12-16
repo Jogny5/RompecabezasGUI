@@ -7,14 +7,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * 
+ * Modo donde las piezas hechas se mueven para armar el rompecabezas
  * @author Jorge
  * @author Diego
  */
 
 public class ModoJuego extends JPanel{
     /**
-     * Inicializa la ventana
+     * Constructor del modo de juego
      */
     public ModoJuego(){
         this.setLayout(null);
@@ -24,8 +24,8 @@ public class ModoJuego extends JPanel{
         Texto();
     }
     /**
-     * 
-     * @param g 
+     * Metodo paint
+     * @param g paint
      */
     public void paint(Graphics g){ 
        g.setColor(Color.gray);      

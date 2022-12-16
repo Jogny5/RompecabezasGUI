@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- * 
+ * Clase que tiene al rompecabezas
  * @author Jorge
  * @author Diego
  */
@@ -19,8 +19,8 @@ public class Rompecabezas extends JPanel{
         this.setBackground(Color.white);
     }
     /**
-     * 
-     * @param g 
+     * metodo paint
+     * @param g paint
      */
     public void paint(Graphics g){ 
        g.setColor(Color.gray);      

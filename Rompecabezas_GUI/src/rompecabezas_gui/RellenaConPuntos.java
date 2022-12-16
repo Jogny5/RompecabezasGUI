@@ -1,20 +1,34 @@
 package rompecabezas_gui;
 import java.awt.*;
 /**
+ * Clase para hacer una linea hecha de puntos en un poligono
  * @author Jorge
  * @author Diego
  */
 public class RellenaConPuntos {
     /**
-     *
-     * @param nx1, ny1: coordenadas del primer punto
-     * @param nx2, ny2: coordenadas del segundo punto
-     * @param p: polygon donde se almacenan todos los puntos en linea recta entre los dos puntos
+     * Constructor de la clase RellenaConPuntos
+     */
+    public RellenaConPuntos(){
+    }
+    
+    /**
+     * Crea una linea a partir de los 2 puntos
+     * @param a Punto de inicio de la linea 
+     * @param b Punto de termino de la linea
+     * @param p Plygon donde se almacenan todos los puntos en linea recta entre los dos puntos
      */
         public synchronized static void nuevaLinea(Point a, Point b, Polygon p){
             nuevaLinea(a.x,a.y,b.x,b.y,p);
         }
-    
+        /**
+         * Crea una linea a partir de la posicion de cada coordenada de los puntos
+         * @param x1 Posicion x del inicio de la linea
+         * @param y1 Posicion y del inicio de la linea
+         * @param x2 Posicion x del termino de la linea
+         * @param y2 Posicion y del termino de la linea
+         * @param p Poligono para hacer la linea
+         */
         public synchronized static void nuevaLinea(int x1,int y1,int x2,int y2, Polygon p){
            int npy=0;
            if(x1==x2&&y1==y2)return;
@@ -32,6 +46,15 @@ public class RellenaConPuntos {
                else return;
            }
         }
+        /**
+         * Crea una linea desde la coordenada x
+         * @param nx1 Coordenada x del inicio de la linea
+         * @param ny1 Coordenada y del inicio de la linea
+         * @param nx2 Coordenada x del termino de la linea
+         * @param ny2 Coordenada y del termino de la linea
+         * @param np Cantidad de puntos que van a componer la linea
+         * @param p Poligono que va a estar hecho de lineas
+         */
         private static void creaLineaX(int nx1,int ny1,int nx2,int ny2, int np, Polygon p){
 	   double m = (((double)ny2-(double)ny1))/(((double)nx2-(double)nx1));
 	   String borrar = Double.toString(m);
@@ -54,6 +77,15 @@ public class RellenaConPuntos {
 	       }
            }
        } 
+        /**
+         * Crea una linea desde la coordenada y
+         * @param nx1 Coordenada x del inicio de la linea
+         * @param ny1 Coordenada y del inicio de la linea
+         * @param nx2 Coordenada x del termino de la linea
+         * @param ny2 Coordenada y del termino de la linea
+         * @param np Cantidad de puntos que van a componer la linea
+         * @param p Poligono que va a estar hecho de lineas
+         */
        private static void creaLineaY(int nx1,int ny1,int nx2,int ny2, int np, Polygon p){
 	   double m = (((double)ny2-(double)ny1))/(((double)nx2-(double)nx1));
 	   String borrar = Double.toString(m);
