@@ -120,7 +120,7 @@ public class PanelBotones extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            PanelPrincipal.getInstancia().RotarIzq();
+           
         }
     };
     /**
@@ -130,7 +130,7 @@ public class PanelBotones extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            PanelPrincipal.getInstancia().RotarDer();
+          
         }
     };
     /**
