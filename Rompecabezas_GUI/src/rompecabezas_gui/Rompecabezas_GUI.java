@@ -14,12 +14,12 @@ public class Rompecabezas_GUI {
     }
 
     /**
-     * Metodo main llama a la ventana para que ejecute todo el programa
+     * Metodo main crea una instancia de ventana para que ejecute todo el programa
      * @param args Main
      */
     public static void main(String[] args) {
         
-        Ventana v = Ventana.getInstancia();
+        Ventana v = new Ventana();
     }
     
 }

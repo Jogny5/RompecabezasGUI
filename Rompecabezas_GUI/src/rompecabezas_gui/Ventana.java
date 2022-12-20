@@ -10,27 +10,14 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author Jorge
  * @author Diego
  */
-public class Ventana extends JFrame{
-    /**
-     * Crea una nueva instancia estatica a ventana
-     */
-    private static final Ventana instancia = new Ventana();
+class Ventana extends JFrame{
+   
     /**
      * Obtiene la instancia de panelprincipal desde el propio panel principal
      */
     private JPanel principal = PanelPrincipal.getInstancia();
-    /**
-     * Crea una instancia a modo juego
-     */
-    private JPanel mjuego = new ModoJuego();
-    /**
-     * Crea una instancia a modo editor
-     */
-    private JPanel meditor = new ModoEditor();
-    /**
-     * Constructor de ventana
-     */
-    private Ventana(){
+ 
+    public Ventana(){
         super();
         setTitle("Rompecabezas"); 
         this.setLayout(new BorderLayout());
@@ -44,35 +31,5 @@ public class Ventana extends JFrame{
         this.setVisible(true);
         
     }
-    /**
-     * Devuelve una instancia de la ventana
-     * @return instancia a la ventana
-     */
-    public static Ventana getInstancia(){
-        
-        return instancia;
-    }
-    /**
-     * Funcion para poder cambiar a modo de juego en el panelprincipal
-     */
-    public void ModoJuego(){
-        
-        this.remove(principal);
-        this.remove(meditor);
-        this.add(mjuego);
-        
-        repaint();
-    }
-    /**
-     * Funcion para poder cambiar a modo de editor en el panelprincipal
-     */
-    public void ModoEditor(){
-        
-        this.remove(principal);
-        this.remove(mjuego);
-        this.add(meditor);
-        
-        repaint();
-    }
-    
+      
 }

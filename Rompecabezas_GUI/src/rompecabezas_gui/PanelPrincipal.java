@@ -261,6 +261,17 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     BufferedImage img3;
     BufferedImage img4;
     
+    ImageIcon icon1;
+    ImageIcon icon2;
+    ImageIcon icon3;
+    ImageIcon icon4;
+    
+    RotatedIcon icono1;
+    RotatedIcon icono2;
+    RotatedIcon icono3;
+    RotatedIcon icono4;    
+       
+    
     private PanelPrincipal(){
         
         try {
@@ -2690,10 +2701,24 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             img3 = CreadorPiezas(img3,p3);
             img4 = CreadorPiezas(img4,p4);
             
-            ImageIcon icono1 = new ImageIcon(img1);
-            ImageIcon icono2 = new ImageIcon(img2);
-            ImageIcon icono3 = new ImageIcon(img3);
-            ImageIcon icono4 = new ImageIcon(img4);
+            icon1 = new ImageIcon(img1);
+            icon2 = new ImageIcon(img2);
+            icon3 = new ImageIcon(img3);
+            icon4 = new ImageIcon(img4);
+            
+            icono1 = new RotatedIcon(icon1,RotatedIcon.Rotate.UPSIDE_DOWN);
+            icono1 = new RotatedIcon(icono1,RotatedIcon.Rotate.UPSIDE_DOWN);
+            
+            icono2 = new RotatedIcon(icon2,RotatedIcon.Rotate.UPSIDE_DOWN);
+            icono2 = new RotatedIcon(icono2,RotatedIcon.Rotate.UPSIDE_DOWN);
+            
+            icono3 = new RotatedIcon(icon3,RotatedIcon.Rotate.UPSIDE_DOWN);
+            icono3 = new RotatedIcon(icono3,RotatedIcon.Rotate.UPSIDE_DOWN);
+            
+            icono4 = new RotatedIcon(icon4,RotatedIcon.Rotate.UPSIDE_DOWN);
+            icono4 = new RotatedIcon(icono4,RotatedIcon.Rotate.UPSIDE_DOWN);
+            
+            
 
             labelPieza1.setIcon(icono1);
             labelPieza2.setIcon(icono2);
@@ -2731,6 +2756,78 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     }
     
     
+    public void RotarIzq(){
+        
+        if(piezaSeleccionada==1 ){
+            
+            icono1 = new RotatedIcon(icono1,-90.0);
+            labelPieza1.setIcon(icono1);
+            repaint();
+   
+        }
+        
+        if(piezaSeleccionada==2){
+            
+            icono2 = new RotatedIcon(icono2,-90.0);
+            labelPieza2.setIcon(icono2);
+            repaint();
+   
+        }
+        
+        if(piezaSeleccionada==3){
+            
+            icono3 = new RotatedIcon(icono3,-90.0);
+            labelPieza3.setIcon(icono3);
+            repaint();
+   
+        }
+        
+        if(piezaSeleccionada==4){
+            
+            icono4 = new RotatedIcon(icono4,-90.0);
+            labelPieza4.setIcon(icono4);
+            repaint();
+   
+        }
+   
+    }
+    
+    public void RotarDer(){
+        
+        if(piezaSeleccionada==1 ){
+            
+            icono1 = new RotatedIcon(icono1,90.0);
+            labelPieza1.setIcon(icono1);
+            repaint();
+   
+        }
+        
+        if(piezaSeleccionada==2){
+            
+            icono2 = new RotatedIcon(icono2,90.0);
+            labelPieza2.setIcon(icono2);
+            repaint();
+   
+        }
+        
+        if(piezaSeleccionada==3){
+            
+            icono3 = new RotatedIcon(icono3,90.0);
+            labelPieza3.setIcon(icono3);
+            repaint();
+   
+        }
+        
+        if(piezaSeleccionada==4){
+            
+            icono4 = new RotatedIcon(icono4,90.0);
+            labelPieza4.setIcon(icono4);
+            repaint();
+   
+        }
+        
+        
+    }
     
     
     /**
