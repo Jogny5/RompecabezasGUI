@@ -140,7 +140,10 @@ public class PanelBotones extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            
+         PanelPrincipal.getInstancia().EstadoEditor();
+         
+          
+          
         }
     };
     /**
@@ -150,7 +153,9 @@ public class PanelBotones extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-           
+         PanelPrincipal.getInstancia().EstadoJuego();
+         
         }
     };
+    
 }

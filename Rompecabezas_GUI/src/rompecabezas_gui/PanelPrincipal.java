@@ -37,7 +37,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      * Instancia a panel principal 
      */
     private static final PanelPrincipal instancia = new PanelPrincipal();
-
+    /**
+     * Indica el modo de juego
+     */
+    public int ModoDeJuego=0;
     /**
      * Indica la posicion x del comienzo de la linea 1 
      */
@@ -98,7 +101,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      * Posicion y de la pieza 1 una vez hecha 
      */
     private int yImagen=0;
-    /**Posicion x de la pieza 2 una vez hecha 
+    /**
+     * Posicion x de la pieza 2 una vez hecha 
      */
     private int xImagen2=0;
     /**
@@ -206,6 +210,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      * Label para la imagen de la pieza 4 
      */
     private JLabel labelPieza4;
+    /**
+     * Label para la imagen central del rompecabezas 
+     */
+    public JLabel labeleditor;
+    /**
+     * Label para la imagen central del rompecabezas 
+     */
+    public JLabel labeljuego;
     /**
      * Label con el mensaje de fin de juego 
      */
@@ -357,6 +369,16 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         labelfinal.setBounds(-600,100, 400, 100);
         labelfinal.setFont(new Font("arial",Font.PLAIN,50));
         this.add(labelfinal);
+        
+        labeleditor=new JLabel("Modo editor");
+        labeleditor.setBounds(-600,100, 400, 100);
+        labeleditor.setFont(new Font("arial",Font.PLAIN,50));
+        this.add(labeleditor);
+        
+        labeljuego=new JLabel("Modo juego");
+        labeljuego.setBounds(-600,100, 400, 100);
+        labeljuego.setFont(new Font("arial",Font.PLAIN,50));
+        this.add(labeljuego);
                 
         label=new JLabel();
         label.setBounds(xImagenPanel, yImagenPanel, anchoPanel, altoPanel);
@@ -402,9 +424,18 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         g.drawImage(img, xImagenPanel, yImagenPanel, anchoPanel, altoPanel,this); 
         //pintar las piezas una vez las 4 esten hechas
        
-        if(pieza1terminada==1 && pieza2terminada==1 && pieza3terminada==1 && pieza4terminada==1){
+        if(pieza1terminada==1 && pieza2terminada==1 && 
+                pieza3terminada==1 && pieza4terminada==1 && ModoDeJuego==1){
             labelfinal.setLocation(500,100);
+            labeleditor.setLocation(-500,100);
+            labeljuego.setLocation(-500,100);
             
+        }else if(ModoDeJuego==0){
+            labeleditor.setLocation(500,100);
+            labeljuego.setLocation(-500,100);
+        }else{
+            labeljuego.setLocation(500,100);
+            labeleditor.setLocation(-500,100);
         }
                
         
@@ -413,7 +444,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             g.setColor(Color.red);
             g.drawPolygon(Linea1);
             
-            if(L1x2>=0){
+            if(L2x2>=0){
                 g.drawPolygon(Linea2);
             
             }
@@ -424,7 +455,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
         }
         
-        if(L1x2!=-1 && pieza2estado==1){
+        if(L1x2!=-1 && pieza2estado==1 && ModoDeJuego==1){
             
             
             g.drawImage(img, 900, 900, anchoPanel, altoPanel,this); 
@@ -433,11 +464,159 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         }
     }
     /**
+     * Clase que cambia al modo editor
+     */
+    public void EstadoEditor(){
+        ModoDeJuego=0;
+        
+        L1x1=-1;
+        L1y1=-1;
+        L1x2=-1;
+        L1y2=-1;
+        L2x1=-1;
+        L2y1=-1;
+        L2x2=-1;
+        L2y2=-1;
+        Linea1=new Polygon();
+        Linea2=new Polygon();
+        
+        interseccionx=-1;
+        intersecciony=-1;
+        xImagen=0;   
+        yImagen=0;
+        xImagen2=0;
+        yImagen2=0;
+        xImagen3=0;
+        yImagen3=0;
+        xImagen4=0;
+        yImagen4=0;
+        xImagenPanel=200;            
+        yImagenPanel=400;
+        anchoPanel=450;
+        altoPanel=250;        
+        pieza1terminada=0;
+        pieza2terminada=0;
+        pieza3terminada=0;
+        pieza4terminada=0;
+        
+        try {
+            img = ImageIO.read(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            img1 = ImageIO.read(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            img2 = ImageIO.read(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            img3 = ImageIO.read(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            img4 = ImageIO.read(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        icon = new ImageIcon(img);
+        
+        p1.translate(-1000,0 );
+        labelPieza1.setLocation(-800,0);
+        p2.translate(-1000,0 );
+        labelPieza2.setLocation(-800,0);
+        p3.translate(-1000,0 );
+        labelPieza3.setLocation(-800,0);
+        p4.translate(-1000,0 );
+        labelPieza4.setLocation(-800,0);
+        
+        labelPieza1.setIcon(null);
+        labelPieza2.setIcon(null);
+        labelPieza3.setIcon(null);
+        labelPieza4.setIcon(null);
+        
+        p1.reset();
+        p2.reset();
+        p3.reset();
+        p4.reset();
+        
+        labelPieza1.removeAll();
+        labelPieza2.removeAll();
+        labelPieza3.removeAll();
+        labelPieza4.removeAll();
+        
+        labelPieza1=new JLabel();
+        
+        labelPieza2=new JLabel();
+        
+        labelPieza3=new JLabel();
+        
+        labelPieza4=new JLabel();
+        
+        pieza1estado=0;
+        pieza2estado=0;
+        pieza3estado=0;
+        pieza4estado=0;
+        
+        labelfinal.setLocation(-600,100);
+        
+        p1=new Polygon();
+        p2=new Polygon();
+        p3=new Polygon();
+        p4=new Polygon();
+        Linea1=new Polygon();
+        Linea2=new Polygon();
+        
+        icx1=-1;
+        icy1=-1;
+        count=0;
+    
+        piezaSeleccionada=1;
+        
+        icon1 = new ImageIcon(img1);
+        icon2 = new ImageIcon(img2);
+        icon3 = new ImageIcon(img3);
+        icon4 = new ImageIcon(img4);
+            
+        icono1 = new RotatedIcon(icon1,RotatedIcon.Rotate.UPSIDE_DOWN);
+        icono1 = new RotatedIcon(icono1,RotatedIcon.Rotate.UPSIDE_DOWN);
+            
+        icono2 = new RotatedIcon(icon2,RotatedIcon.Rotate.UPSIDE_DOWN);
+        icono2 = new RotatedIcon(icono2,RotatedIcon.Rotate.UPSIDE_DOWN);
+            
+        icono3 = new RotatedIcon(icon3,RotatedIcon.Rotate.UPSIDE_DOWN);
+        icono3 = new RotatedIcon(icono3,RotatedIcon.Rotate.UPSIDE_DOWN);
+          
+        icono4 = new RotatedIcon(icon4,RotatedIcon.Rotate.UPSIDE_DOWN);
+        icono4 = new RotatedIcon(icono4,RotatedIcon.Rotate.UPSIDE_DOWN);
+        
+        repaint();
+    }
+    /**
+     * Clase que cambia al modo juego
+     */
+    public void EstadoJuego(){
+        ModoDeJuego=1;
+        repaint();
+    }
+    
+    
+    /**
      * Calcula la interseccion entre 2 lineas
      */
     public void interseccion(){
         System.out.println(pieza2estado);
-        if(pieza2estado!=0){
+        if(pieza2estado!=0 && ModoDeJuego==0 && L2x2!=-1){
             int x1,x2,y1,y2;
             
             for(int i=0;i<50;i++){
@@ -477,7 +656,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             }
         }
             
-        dividirPiezas();
+        if(interseccionx>0){
+            dividirPiezas();
+        }
         
     }
     /**
@@ -489,7 +670,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
         
         //Primer caso principal
-        if(L1y1>intersecciony && L2y1<intersecciony && pieza2estado!=0){
+        if(L1y1>intersecciony && L2y1<intersecciony && pieza2estado!=0 && ModoDeJuego==0){
             if(L1y1>=intersecciony+yImagen-yImagenPanel){
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
                     if(L1x1==xImagenPanel && L2x1==xImagenPanel){
@@ -545,7 +726,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             
                             }
                             
-                        // chequeado arriba    
                         }else{
                             if(L1y2==yImagenPanel){
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
@@ -568,7 +748,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             
-                                System.out.println("hdhddhhd");    
                             }else{
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
@@ -591,7 +770,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L1x2-xImagenPanel, yImagen4);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                             
-                                System.out.println("yigggig");    
                             }
                                              
 
@@ -654,7 +832,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
                                 
                             }
-                        //chequeado arriba    
                         }else{
                             if(L1y2==yImagenPanel){
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
@@ -679,7 +856,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
                                 
                                 
-                                System.out.println("rhryray");
                             }else{
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2+L2y2-yImagenPanel);
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
@@ -703,7 +879,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+L2x1-xImagenPanel, yImagen4);
                                 
                                 
-                                System.out.println("óiói");
                             }
                             
                         }
@@ -766,7 +941,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 
                                 
                             }
-                        //check   
                         }else{
                             
                             if(L2x2==xImagenPanel+anchoPanel){
@@ -827,7 +1001,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         System.out.println("falta otro caso 1");
                     }
                     
-                //check    
                 }else{
                     
                     p1.addPoint(L1x1+xImagen-xImagenPanel, yImagen+altoPanel);
@@ -948,7 +1121,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             
         //Segundo caso principal   
-        }else if(L1y1<intersecciony && L2y1>intersecciony && pieza2estado!=0){
+        }else if(L1y1<intersecciony && L2y1>intersecciony && pieza2estado!=0 && ModoDeJuego==0){
             if(L2y1>=intersecciony+yImagen-yImagenPanel){
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
                     if(L1x1==xImagenPanel && L2x1==xImagenPanel){
@@ -1011,7 +1184,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             }
                             
                             
-                        //arriba check
                         }else{
                             
                             if(L1y2==yImagenPanel+altoPanel){
@@ -1037,7 +1209,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 
-                                System.out.println("qaytyqa");
                                 
                             }else{
                                 p2.addPoint(xImagen2+anchoPanel, yImagen2);
@@ -1062,7 +1233,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 p4.addPoint(xImagen4+anchoPanel, yImagen4+L2y2-yImagenPanel);
                                 p4.addPoint(interseccionx+xImagen4-xImagenPanel, intersecciony+yImagen4-yImagenPanel);
                                 
-                                System.out.println("zggzgzg");
                                 
                             }
                             
@@ -1127,7 +1297,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                             }
                             
                             
-                        //arriba check    
                         }else{
                             
                             if(L1y2==yImagenPanel+altoPanel){
@@ -1291,7 +1460,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         
 
                     }else{
-                        System.out.println("otro caso 2");
+                        System.out.println("falta otro caso 2");
                     }
                     
                 }else if(L1x2==xImagenPanel+anchoPanel &&  L2x2==xImagenPanel+anchoPanel){
@@ -1434,7 +1603,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
              
             
         //Caso principal 3
-        }else if(L2y1>intersecciony && L1y1>intersecciony && pieza2estado!=0){
+        }else if(L2y1>intersecciony && L1y1>intersecciony && pieza2estado!=0 && ModoDeJuego==0){
             if(L2y1>=intersecciony+yImagen-yImagenPanel){
                 
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
@@ -1860,7 +2029,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     
                 }else if(L1x2==xImagenPanel+anchoPanel || L2x2==xImagenPanel+anchoPanel ){
 
-                    System.out.println("333uiuih");
                     if(L1x2==xImagenPanel+anchoPanel && L2x2==xImagenPanel+anchoPanel){
                         if(L1x1<L2x1){
 
@@ -2077,7 +2245,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             
         //Casos principales 4    
-        }else if(L2y1<intersecciony && L1y1<intersecciony && pieza2estado!=0){
+        }else if(L2y1<intersecciony && L1y1<intersecciony && pieza2estado!=0 && ModoDeJuego==0){
             if(L2y1>=intersecciony+yImagen-yImagenPanel){
                 if(L1x1==xImagenPanel || L2x1==xImagenPanel){
 
@@ -2493,7 +2661,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     }
                     
                 }else{
-                    //
+                    
                     if(L1y2==yImagenPanel+altoPanel || L2y2==yImagenPanel+altoPanel){
                         if(L1y2==yImagenPanel+altoPanel && L2y2==yImagenPanel+altoPanel){
                             if(L1x1<L2x1){
@@ -2711,7 +2879,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
         }
         
-        if(pieza2estado!=0){
+        if(pieza2estado!=0 && ModoDeJuego==0){
 
             img1 = CreadorPiezas(img1,p1);
             img2 = CreadorPiezas(img2,p2);
@@ -2839,7 +3007,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      * Metodo que rota la pieza seleccionada en -90 grados 
      */
     public void RotarIzq(){
-        
+      if(ModoDeJuego==1){   
         if(piezaSeleccionada==1 ){
             
             icono1 = new RotatedIcon(icono1,-90.0);
@@ -2871,14 +3039,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             repaint();
    
         }
-   
+      }
     }
     
     /**
      * Metodo que rota la pieza seleccionada en 90 grados 
      */
     public void RotarDer(){
-        
+      if(ModoDeJuego==1){   
         if(piezaSeleccionada==1 ){
             
             icono1 = new RotatedIcon(icono1,90.0);
@@ -2910,7 +3078,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             repaint();
    
         }
-        
+      }  
         
     }
     
@@ -2931,7 +3099,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      */
     @Override
     public void mousePressed(MouseEvent e) {
-            
+        if(ModoDeJuego==1){     
             if(e.getSource() == labelPieza1){
             p1.getBounds();
             System.out.println(p1.getBounds());
@@ -2978,6 +3146,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             
             count=0;
+        }    
     }
     /**
      * Metodo que arrastra la pieza
@@ -2985,7 +3154,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      */
     @Override
     public void mouseDragged(MouseEvent e) {
-        
+      if(ModoDeJuego==1){   
                 
         if(e.getSource() == labelPieza1 ){
         
@@ -3088,7 +3257,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         }
         
        
-        
+      }  
         
     }
     /**
@@ -3103,6 +3272,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      */
     @Override
     public void mouseReleased(MouseEvent e) {
+      if(ModoDeJuego==1){   
         int x = labelPieza1.getLocation().x;
         int y = labelPieza1.getLocation().y;
         if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 ) {
@@ -3150,7 +3320,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
 
                 
         initialClick = null;
-        
+      }  
     }
 
     /**
@@ -3160,7 +3330,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+      if(ModoDeJuego==0){   
         if (e.getSource() == label) {
         
         if(pieza1estado==0 && pieza2estado==0){
@@ -3203,6 +3373,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             System.out.println("entrada "+x+" , "+y);
         }
         }
+      }  
     }
 
     /**
@@ -3211,7 +3382,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      */
     @Override
     public void mouseExited(MouseEvent e) {
-        
+      if(ModoDeJuego==0){  
         
         if (e.getSource() == label) {
             
@@ -3284,6 +3455,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                 pieza1estado=1;
             }
         }
+      }  
     }
     
    
