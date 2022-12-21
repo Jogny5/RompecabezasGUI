@@ -37,52 +37,40 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      * Instancia a panel principal 
      */
     private static final PanelPrincipal instancia = new PanelPrincipal();
-    /**
-     * Instancia a modo editor 
-     */
-    private ModoEditor Meditor;
-    /**
-     * Instancia a modo juego 
-     */
-    private ModoJuego Mjuego;
-    /**
-     * Variable que indica el modo de juego
-     */
-    private int ModoDeJuego=0;
 
     /**
      * Indica la posicion x del comienzo de la linea 1 
      */
-    public int L1x1;
+    private int L1x1;
     /**
      * Indica la posicion y del comienzo de la linea 1 
      */
-    public int L1y1;
+    private int L1y1;
     /**
      * Indica la posicion x del final de la linea 1 
      */
-    public int L1x2=-1;
+    private int L1x2=-1;
     /**
      * Indica la posicion y del final de la linea 1
      */
-    public int L1y2;
+    private int L1y2;
     
     /**
      * Indica la posicion x del comienzo de la linea 2 
      */
-    public int L2x1;
+    private int L2x1;
     /**
      * Indica la posicion y del comienzo de la linea 2 
      */
-    public int L2y1;
+    private int L2y1;
     /**
      * Indica la posicion x del final de la linea 2 
      */
-    public int L2x2;
+    private int L2x2;
     /**
      * Indica la posicion y del final de la linea 2 
      */
-    public int L2y2;
+    private int L2y2;
     
     /**
      * Poligno que hace de una de las lineas que separan la imagen 
@@ -96,90 +84,90 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     /**
      * Posicion x de la interseccion 
      */
-    public int interseccionx=-1;
+    private int interseccionx=-1;
     /**
      * Posicion y de la interseccion 
      */
-    public int intersecciony=-1;
+    private int intersecciony=-1;
     
     /**
      * Posicion x de la pieza 1 una vez hecha 
      */
-    public int xImagen=0;   
+    private int xImagen=0;   
     /**
      * Posicion y de la pieza 1 una vez hecha 
      */
-    public int yImagen=0;
+    private int yImagen=0;
     /**Posicion x de la pieza 2 una vez hecha 
      */
-    public int xImagen2=0;
+    private int xImagen2=0;
     /**
      * Posicion y de la pieza 2 una vez hecha 
      */
-    public int yImagen2=0;
+    private int yImagen2=0;
     /**
      * Posicion x de la pieza 3 una vez hecha 
      */
-    public int xImagen3=0;
+    private int xImagen3=0;
     /**
      * Posicion y de la pieza 3 una vez hecha 
      */
-    public int yImagen3=0;
+    private int yImagen3=0;
     /**
      * Posicion x de la pieza 4 una vez hecha 
      */
-    public int xImagen4=0;
+    private int xImagen4=0;
     /**
      * Posicion y de la pieza 4 una vez hecha 
      */
-    public int yImagen4=0;
+    private int yImagen4=0;
     
     /**Posicion x de la imagen central a la que se le hacen los cortes 
      */
-    public int xImagenPanel=200;            
+    private int xImagenPanel=200;            
     /**Posicion y de la imagen central a la que se le hacen los cortes 
      */
-    public int yImagenPanel=400;
+    private int yImagenPanel=400;
     /**Ancho de la imagen central a la que se le hacen los cortes 
      */
-    public int anchoPanel=450;
+    private int anchoPanel=450;
     /**Alto de la imagen central a la que se le hacen los cortes 
      */
-    public int altoPanel=250;        
+    private int altoPanel=250;        
     
     /**
      * Indica si la pieza 1 ya fue colocada en el rompecabezas y se aceptó 
      */
-    public int pieza1terminada=0;
+    private int pieza1terminada=0;
     /**
      * Indica si la pieza 2 ya fue colocada en el rompecabezas y se aceptó 
      */
-    public int pieza2terminada=0;
+    private int pieza2terminada=0;
     /**
      * Indica si la pieza 3 ya fue colocada en el rompecabezas y se aceptó 
      */
-    public int pieza3terminada=0;
+    private int pieza3terminada=0;
     /**
      * Indica si la pieza 4 ya fue colocada en el rompecabezas y se aceptó 
      */
-    public int pieza4terminada=0;
+    private int pieza4terminada=0;
     
     /**
      * Indica el estado las lineas para ver si se tienen que hacer de nuevo
      */
-    public int pieza1estado=0;
+    private int pieza1estado=0;
     /**
      * Indica el estado las lineas para ver si se tienen que hacer de nuevo
      */
-    public int pieza2estado=0;
+    private int pieza2estado=0;
     /**
      * Indica el estado las lineas para ver si se tienen que hacer de nuevo
      */
-    public int pieza3estado=0;
+    private int pieza3estado=0;
     /**
      * Indica el estado las lineas para ver si se tienen que hacer de nuevo
      */
-    public int pieza4estado=0;
+    private int pieza4estado=0;
     
     /**
      * Poligono que tapa la pieza 1 para formar la pieza 
@@ -201,77 +189,132 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     /**
      * Label para la imagen central del rompecabezas 
      */
-    public JLabel label;
+    private JLabel label;
     /**
      * Label para la imagen de la pieza 1 
      */
-    public JLabel labelPieza1;
+    private JLabel labelPieza1;
     /**
      * Label para la imagen de la pieza 2 
      */
-    public JLabel labelPieza2;
+    private JLabel labelPieza2;
     /**
      * Label para la imagen de la pieza 3 
      */
-    public JLabel labelPieza3;
+    private JLabel labelPieza3;
     /**
      * Label para la imagen de la pieza 4 
      */
-    public JLabel labelPieza4;
+    private JLabel labelPieza4;
     /**
      * Label con el mensaje de fin de juego 
      */
-    public JLabel labelfinal;   
+    private JLabel labelfinal;   
  
     /**
      * Ubicacion del clickeo cuando se va a arrastrar una pieza para que se mueva junto al mouse 
      */
-    Point initialClick;
+    private Point initialClick;
     
     /**
      * Guarda la posicion en la que se encontraba el poligono y que cuando se traslade siga correctamente al label 
      */
-    int icx1;
+    private int icx1;
     /**
      * Guarda la posicion en la que se encontraba el poligono y que cuando se traslade siga correctamente al label 
      */    
-    int icy1;
+    private int icy1;
     /**
      Indica que se clickeo la pieza y no el poligono alrededor
      */
-    int count=0;
+    private int count=0;
     
     /**
      * Inicializa el panel y los label de las piezas
      */
-    int piezaSeleccionada=1;
+    private int piezaSeleccionada=1;
     
+    /**
+     * BufferedImage en la cual se guardara el png original
+     */
+    private BufferedImage img;
+    
+    /**
+     * URL el cual obtiene el png que sera la imagen a usar del rompecabezas
+     */
+    private URL url = getClass().getResource("/kirby.png");
+   
+    /**
+     * Icono el cual se usara para el label en el que se divide la imagen
+     */
+    private ImageIcon icon;
+    
+    
+    /**
+     * Imagen que se guardara la pieza1 despues de hacer los pixeles transparentes en base al poligono p1
+     */
+    private BufferedImage img1;
+    
+    /**
+     * Imagen que se guardara la pieza2 despues de hacer los pixeles transparentes en base al poligono p2
+     */
+    private BufferedImage img2;
+    
+    /**
+     * Imagen que se guardara la pieza3 despues de hacer los pixeles transparentes en base al poligono p3
+     */
+    private BufferedImage img3;
+    
+    /**
+     * Imagen que se guardara la pieza4 despues de hacer los pixeles transparentes en base al poligono p4
+     */
+    private BufferedImage img4;
+    
+    
+    /**
+     * Icono a usar para hacer un RotatedIcon con la imagen de la pieza 1
+     */
+    private ImageIcon icon1;
+    
+    /**
+     * Icono a usar para hacer un RotatedIcon con la imagen de la pieza 2
+     */
+    private ImageIcon icon2;
+    
+    /**
+     * Icono a usar para hacer un RotatedIcon con la imagen de la pieza 3
+     */
+    private ImageIcon icon3;
+    
+    /**
+     * Icono a usar para hacer un RotatedIcon con la imagen de la pieza 4
+     */
+    private ImageIcon icon4;
+    
+    
+    /**
+     * RotatedIcon hecho en base de un ImageIcon, permite rotar la imagen de icon1
+     */
+    private RotatedIcon icono1;
+    
+    /**
+     * RotatedIcon hecho en base de un ImageIcon, permite rotar la imagen de icon2
+     */
+    private RotatedIcon icono2;
+    
+    /**
+     * RotatedIcon hecho en base de un ImageIcon, permite rotar la imagen de icon3
+     */
+    private RotatedIcon icono3;
+    
+    /**
+     * RotatedIcon hecho en base de un ImageIcon, permite rotar la imagen de icon4
+     */
+    private RotatedIcon icono4;    
+       
     /**
      * Constructor de la clase panelprincipal
      */
-    
-    BufferedImage img;
-    
-    URL url = getClass().getResource("/kirby.png");
-   
-    ImageIcon icon;
-    
-    BufferedImage img1;
-    BufferedImage img2;
-    BufferedImage img3;
-    BufferedImage img4;
-    
-    ImageIcon icon1;
-    ImageIcon icon2;
-    ImageIcon icon3;
-    ImageIcon icon4;
-    
-    RotatedIcon icono1;
-    RotatedIcon icono2;
-    RotatedIcon icono3;
-    RotatedIcon icono4;    
-       
-    
     private PanelPrincipal(){
         
         try {
@@ -321,32 +364,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         label.addMouseListener(this);
         this.add(label);
         
-        labelPieza1=new JLabel();
-        labelPieza1.setBounds(xImagen,yImagen,anchoPanel,altoPanel);
-        labelPieza1.addMouseListener(this);
-        labelPieza1.addMouseMotionListener(this);
-        this.add(labelPieza1);
-        
-        labelPieza2=new JLabel();
-        labelPieza2.setBounds(xImagen2, yImagen2, anchoPanel, altoPanel);
-        labelPieza2.addMouseListener(this);
-        labelPieza2.addMouseMotionListener(this);
-        this.add(labelPieza2);
-        
-        labelPieza3=new JLabel();
-        labelPieza3.setBounds(xImagen3, yImagen3, anchoPanel, altoPanel);
-        labelPieza3.addMouseListener(this);
-        labelPieza3.addMouseMotionListener(this);
-        this.add(labelPieza3);
-        
-        labelPieza4=new JLabel();
-        labelPieza4.setBounds(xImagen4,yImagen4,anchoPanel,altoPanel);
-        labelPieza4.addMouseListener(this);
-        labelPieza4.addMouseMotionListener(this);
-        this.add(labelPieza4);
-        
-        
-        
         p1=new Polygon();
         p2=new Polygon();
         p3=new Polygon();
@@ -364,7 +381,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         return instancia;
     }    
     /**
-     * Clase para definir que pieza esta seleccionada para rotarla
+     * Metodo para definir que pieza esta seleccionada para rotarla
      * @param x el numero de la pieza para la rotacion
      */
     public void setPiezaelegir(int x){
@@ -2701,11 +2718,16 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             img3 = CreadorPiezas(img3,p3);
             img4 = CreadorPiezas(img4,p4);
             
+            img1 = trimImage(img1);
+            img2 = trimImage(img2);
+            img3 = trimImage(img3);
+            img4 = trimImage(img4);
+            
             icon1 = new ImageIcon(img1);
             icon2 = new ImageIcon(img2);
             icon3 = new ImageIcon(img3);
             icon4 = new ImageIcon(img4);
-            
+   
             icono1 = new RotatedIcon(icon1,RotatedIcon.Rotate.UPSIDE_DOWN);
             icono1 = new RotatedIcon(icono1,RotatedIcon.Rotate.UPSIDE_DOWN);
             
@@ -2718,7 +2740,30 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             icono4 = new RotatedIcon(icon4,RotatedIcon.Rotate.UPSIDE_DOWN);
             icono4 = new RotatedIcon(icono4,RotatedIcon.Rotate.UPSIDE_DOWN);
             
-            
+            labelPieza1=new JLabel();
+            labelPieza1.setBounds(xImagen,yImagen,img1.getWidth(),img1.getHeight());
+            labelPieza1.addMouseListener(this);
+            labelPieza1.addMouseMotionListener(this);
+            this.add(labelPieza1);
+
+            labelPieza2=new JLabel();
+            labelPieza2.setBounds(xImagen2, yImagen2,img2.getWidth(),img2.getHeight());
+            labelPieza2.addMouseListener(this);
+            labelPieza2.addMouseMotionListener(this);
+            this.add(labelPieza2);
+
+            labelPieza3=new JLabel();
+            labelPieza3.setBounds(xImagen3, yImagen3,img3.getWidth(),img3.getHeight());
+            labelPieza3.addMouseListener(this);
+            labelPieza3.addMouseMotionListener(this);
+            this.add(labelPieza3);
+
+            labelPieza4=new JLabel();
+            labelPieza4.setBounds(xImagen4,yImagen4,img4.getWidth(),img4.getHeight());
+            labelPieza4.addMouseListener(this);
+            labelPieza4.addMouseMotionListener(this);
+            this.add(labelPieza4);
+        
 
             labelPieza1.setIcon(icono1);
             labelPieza2.setIcon(icono2);
@@ -2732,7 +2777,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
     }
   
-    private BufferedImage CreadorPiezas(BufferedImage image, Polygon p) {
+    /**
+     * Metodo que devuelve la imagen entregada con los pixeles que tambien son contenidos por el poligono de color transparente
+     * 
+     * @param image imagen a la que los pixeles se les hacen transparentes para darle la forma de la pieza
+     * @param p poligono el cual determina el area en que los poligonos de la imagen pasaran a ser transparentes
+     * @return la imagen original con los pixeles que coincidian con el poligono transparentes
+     */
+    public BufferedImage CreadorPiezas(BufferedImage image, Polygon p) {
             
         BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(),BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = newImage.createGraphics();
@@ -2755,7 +2807,37 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         return newImage; 
     }
     
+    /**
+     * Recorta una imagen en los pixeles que son transparentes
+     * 
+     * @param image Imagen a recortar
+     * @return Imagen recortada haciendola lo mas pequeña posible 
+     */
     
+    private static BufferedImage trimImage(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        int top = height / 2;
+        int bottom = top;
+        int left = width / 2 ;
+        int right = left;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                if (image.getRGB(x, y) != 0){
+                    top    = Math.min(top, y);
+                    bottom = Math.max(bottom, y);
+                    left   = Math.min(left, x);
+                    right  = Math.max(right, x);
+                }
+            }
+        }
+        return image.getSubimage(left, top, right - left + 1, bottom - top + 1);
+    }
+    
+    
+    /**
+     * Metodo que rota la pieza seleccionada en -90 grados 
+     */
     public void RotarIzq(){
         
         if(piezaSeleccionada==1 ){
@@ -2792,6 +2874,9 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
    
     }
     
+    /**
+     * Metodo que rota la pieza seleccionada en 90 grados 
+     */
     public void RotarDer(){
         
         if(piezaSeleccionada==1 ){
@@ -2831,7 +2916,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     
     
     /**
-     * Metdo vacio
+     * Metodo vacio que debe ser sobreescrito
      * @param e mouseevent
      */
     @Override

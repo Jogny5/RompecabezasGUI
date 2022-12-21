@@ -8,19 +8,20 @@ import java.awt.geom.AffineTransform;
 import javax.swing.Icon;
 
 /**
- *  The RotatedIcon allows you to change the orientation of an Icon by
- *  rotating the Icon before it is painted. This class supports the following
- *  orientations:
- *
- * <ul>
- * <li>DOWN - rotated 90 degrees
- * <li>UP (default) - rotated -90 degrees
- * <li>UPSIDE_DOWN - rotated 180 degrees
- * <li>ABOUT_CENTER - the icon is rotated by the specified degrees about its center.
- * </ul>
+ *  El icono rotado le permite cambiar la orientación de un icono
+  * rotar el icono antes de pintarlo. Esta clase admite lo siguiente
+  * orientaciones:
+  *
+
  */
 public class RotatedIcon implements Icon
 {
+        /**
+        * DOWN - girado 90 grados
+        * UP (defecto) - girado -90 grados
+        * UPSIDE_DOWN - girado 180 grados
+        * ABOUT_CENTER - el icono gira los grados especificados sobre su centro.
+         */
 	public enum Rotate
 	{
 		DOWN,
@@ -29,28 +30,33 @@ public class RotatedIcon implements Icon
 		ABOUT_CENTER;
 	}
 
-	private Icon icon;
-
+	
+        /**
+         * Icono que contendra el icono entregado en constructor
+         */
+        private Icon icon;
+        
+        /**
+         * Esta clase representa un objeto afín que gira las coordenadas alrededor de un punto de anclaje.
+         */
 	private Rotate rotate;
-
+        
+        /**
+         * Grados a rotar
+         */
 	private double degrees;
+        
+        /**
+         * Boolean para revisar si el icono es o no circular
+         */
 	private boolean circularIcon;
 
-	/**
-	 *  Convenience constructor to create a RotatedIcon that is rotated DOWN.
-	 *
-	 *  @param icon  the Icon to rotate
-	 */
-	public RotatedIcon(Icon icon)
-	{
-		this(icon, Rotate.UP);
-	}
 
 	/**
-	 *  Create a RotatedIcon
+	 *  Crea un RotatedIcon
 	 *
-	 *  @param icon	the Icon to rotate
-	 *  @param rotate  the direction of rotation
+	 *  @param icon	Icono a rotar
+	 *  @param rotate  Direccion de la rotacion
 	 */
 	public RotatedIcon(Icon icon, Rotate rotate)
 	{
@@ -59,11 +65,11 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Create a RotatedIcon. The icon will rotate about its center. This
-	 *  constructor will automatically set the Rotate enum to ABOUT_CENTER.
+        * Crear un icono rotado. El icono rotará sobre su centro. Este
+        * el constructor establecerá automáticamente la enumeración Rotar en ABOUT_CENTER.
 	 *
-	 *  @param icon	the Icon to rotate
-	 *  @param degrees   the degrees of rotation
+	 *  @param icon	Icono a rotar
+	 *  @param degrees  Grado de la rotacion
 	 */
 	public RotatedIcon(Icon icon, double degrees)
 	{
@@ -71,12 +77,12 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Create a RotatedIcon. The icon will rotate about its center. This
-	 *  constructor will automatically set the Rotate enum to ABOUT_CENTER.
+        * Crear un icono rotado. El icono rotará sobre su centro. Este
+        * el constructor establecerá automáticamente la enumeración Rotar en ABOUT_CENTER.
 	 *
-	 *  @param icon	the Icon to rotate
-	 *  @param degrees   the degrees of rotation
-	 *  @param circularIcon treat the icon as circular so its size doesn't change
+	 *  @param icon	Icono a rotar
+	 *  @param degrees   Grados de la rotacion
+	 *  @param circularIcon trate el ícono como circular para que su tamaño no cambie
 	 */
 	public RotatedIcon(Icon icon, double degrees, boolean circularIcon)
 	{
@@ -86,9 +92,9 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Gets the Icon to be rotated
+	 *  Obtiene el icono a rotar
 	 *
-	 *  @return the Icon to be rotated
+	 *  @return Icono a rotar
 	 */
 	public Icon getIcon()
 	{
@@ -96,9 +102,9 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Gets the Rotate enum which indicates the direction of rotation
+         * Obtiene la enumeración de Rotate que indica la dirección de rotación
 	 *
-	 *  @return the Rotate enum
+	 *  @return La enumaracion de rotate
 	 */
 	public Rotate getRotate()
 	{
@@ -106,9 +112,9 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Gets the degrees of rotation. Only used for Rotate.ABOUT_CENTER.
+         * Obtiene los grados de rotación. solo usado para Rotate.ABOUT_CENTER.
 	 *
-	 *  @return the degrees of rotation
+	 *  @return grados de la rotacion
 	 */
 	public double getDegrees()
 	{
@@ -116,12 +122,12 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Set the degrees of rotation. Only used for Rotate.ABOUT_CENTER.
-	 *  This method only sets the degress of rotation, it will not cause
-	 *  the Icon to be repainted. You must invoke repaint() on any
-	 *  component using this icon for it to be repainted.
+        * Establecer los grados de rotación. Solo se usa para Rotar.ABOUT_CENTER.
+        * Este método solo establece el grado de rotación, no causará
+        * el Icono para ser repintado. Debe invocar repaint() en cualquier
+        * componente que usa este ícono para que sea repintado.
 	 *
-	 *  @param degrees the degrees of rotation
+	 *  @param degrees grados de la rotacion
 	 */
 	public void setDegrees(double degrees)
 	{
@@ -129,10 +135,10 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Is the image circular or rectangular? Only used for Rotate.ABOUT_CENTER.
-	 *  When true, the icon width/height will not change as the Icon is rotated.
-	 *
-	 *  @return true for a circular Icon, false otherwise
+        * ¿La imagen es circular o rectangular? Solo se usa para Rotar.ABOUT_CENTER.
+        * Cuando es verdadero, el ancho/alto del icono no cambiará a medida que se gire el icono.
+        *
+        * @return verdadero para un icono circular, falso en caso contrario
 	 */
 	public boolean isCircularIcon()
 	{
@@ -140,10 +146,10 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Set the Icon as circular or rectangular. Only used for Rotate.ABOUT_CENTER.
-	 *  When true, the icon width/height will not change as the Icon is rotated.
-	 *
-	 *  @param true for a circular Icon, false otherwise
+        * Establecer el icono como circular o rectangular. Solo se usa para Rotar.ABOUT_CENTER.
+        * Cuando es verdadero, el ancho/alto del icono no cambiará a medida que se gire el icono.
+        *
+        * @param circularIcon verdadero para un icono circular, falso en caso contrario
 	 */
 	public void setCircularIcon(boolean circularIcon)
 	{
@@ -151,13 +157,13 @@ public class RotatedIcon implements Icon
 	}
 
 //
-//  Implement the Icon Interface
+//  Implemante la interfaz Icon
 //
 
 	/**
-	 *  Gets the width of this icon.
+	 *  Obtiene el ancho del icono
 	 *
-	 *  @return the width of the icon in pixels.
+	 *  @return Ancho del icono en pixeles
 	 */
 	@Override
 	public int getIconWidth()
@@ -182,9 +188,9 @@ public class RotatedIcon implements Icon
 	}
 
 	/**
-	 *  Gets the height of this icon.
+	 *  Obtiene el alto del icono
 	 *
-	 *  @return the height of the icon in pixels.
+	 *  @return Alto del icono en pixeles.
 	 */
 	@Override
 	public int getIconHeight()
@@ -208,13 +214,13 @@ public class RotatedIcon implements Icon
 			return icon.getIconWidth();
 	}
 
-   /**
-	*  Paint the icons of this compound icon at the specified location
-	*
-	*  @param c The component on which the icon is painted
-	*  @param g the graphics context
-	*  @param x the X coordinate of the icon's top-left corner
-	*  @param y the Y coordinate of the icon's top-left corner
+        /**
+        * Pinta los íconos de este ícono compuesto en la ubicación especificada
+        *
+        * @param c El componente sobre el que se pinta el icono
+        * @param g el contexto gráfico
+        * @param x la coordenada X de la esquina superior izquierda del icono
+        * @param y la coordenada Y de la esquina superior izquierda del icono
 	*/
 	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y)
