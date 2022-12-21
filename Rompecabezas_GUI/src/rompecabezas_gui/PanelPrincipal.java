@@ -327,6 +327,56 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     /**
      * Constructor de la clase panelprincipal
      */
+    
+    /**
+     * 
+     * Label que se mostrara al poner la pieza 1 en su logar correspondiente
+     */
+    private JLabel Labelfinal1;
+    
+    /**
+     * 
+     * Label que se mostrara al poner la pieza 2 en su logar correspondiente
+     */
+    private JLabel Labelfinal2;
+    
+    /**
+     * 
+     * Label que se mostrara al poner la pieza 3 en su logar correspondiente
+     */
+    private JLabel Labelfinal3;
+    
+    /**
+     * 
+     * Label que se mostrara al poner la pieza 4 en su logar correspondiente
+     */
+    private JLabel Labelfinal4;
+    
+    /**
+     * 
+     * Valor para revisar la rotacion de la pieza 1
+     */
+    private int Rotacion1=0;
+    
+    /**
+     * 
+     * Valor para revisar la rotacion de la pieza 2
+     */
+    private int Rotacion2=0;
+    
+    /**
+     * 
+     * Valor para revisar la rotacion de la pieza 3
+     */
+    private int Rotacion3=0;
+    
+    /**
+     * 
+     * Valor para revisar la rotacion de la pieza 4
+     */
+    private int Rotacion4=0;
+    
+    
     private PanelPrincipal(){
         
         try {
@@ -385,6 +435,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         label.setIcon(icon);
         label.addMouseListener(this);
         this.add(label);
+         
         
         p1=new Polygon();
         p2=new Polygon();
@@ -421,8 +472,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         super.paint(g);
         
         g.drawRect(xImagenPanel, yImagenPanel, anchoPanel, altoPanel);
-        g.drawImage(img, xImagenPanel, yImagenPanel, anchoPanel, altoPanel,this); 
-        //pintar las piezas una vez las 4 esten hechas
        
         if(pieza1terminada==1 && pieza2terminada==1 && 
                 pieza3terminada==1 && pieza4terminada==1 && ModoDeJuego==1){
@@ -468,6 +517,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
      */
     public void EstadoEditor(){
         ModoDeJuego=0;
+        
+        this.add(label);
         
         L1x1=-1;
         L1y1=-1;
@@ -612,12 +663,20 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     
     
     /**
-     * Calcula la interseccion entre 2 lineas
+     * Calcula la interseccion de las lineas 
+     * 
+     * @param linea1 hecha con rellenar punto obtenida al dividir el rompecabezas
+     * @param linea2 hecha con rellenar punto obtenida al dividir el rompecabezas
      */
-    public void interseccion(){
+    public void interseccion(Polygon linea1, Polygon linea2){
+        
         System.out.println(pieza2estado);
+        
+        
         if(pieza2estado!=0 && ModoDeJuego==0 && L2x2!=-1){
-            int x1,x2,y1,y2;
+            
+     
+             int x1,x2,y1,y2;
             
             for(int i=0;i<50;i++){
                 x1=(L1x1+i*(L1x2-L1x1)/50);
@@ -629,7 +688,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                     x2=(L2x1+j*(L2x2-L2x1)/50);
                     y2=(L2y1+j*(L2y2-L2y1)/50);
                     
-                    if(Math.abs(x1-x2)<10 && Math.abs(y1-y2)<8){
+                    if(Math.abs(x1-x2)<8 && Math.abs(y1-y2)<8){
                         interseccionx=x1;
                         intersecciony=y1;
                         System.out.println("La interseccion es "+interseccionx+" , "+intersecciony);
@@ -637,13 +696,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                                 " , "+(intersecciony-yImagenPanel));
                         i=50;
                         j=50;
+                    } 
                 }
-                
-                    
-                }
-               
-                
             }
+            
+            
             if(interseccionx<0){
                 System.out.println("no intersectan, ingrese las lineas de nuevo");
                         Linea1=new Polygon();
@@ -653,7 +710,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                         pieza2estado=0;
                         pieza3estado=0; 
                         pieza4estado=0;
-            }
+                }
         }
             
         if(interseccionx>0){
@@ -661,6 +718,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         }
         
     }
+    
+    
     /**
      * Crea 4 piezas separadas por las 2 lineas hechas tomando todos los posibles casos de lineas
      */
@@ -2886,6 +2945,27 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             img3 = CreadorPiezas(img3,p3);
             img4 = CreadorPiezas(img4,p4);
             
+            Labelfinal1=new JLabel();
+            Labelfinal1.setBounds(-1000, -1000, anchoPanel, altoPanel);
+            Labelfinal1.setIcon(new ImageIcon(img1));
+            this.add(Labelfinal1);
+            
+            Labelfinal2=new JLabel();
+            Labelfinal2.setBounds(-1000, -1000, anchoPanel, altoPanel);
+            Labelfinal2.setIcon(new ImageIcon(img2));
+            this.add(Labelfinal2);
+            
+            Labelfinal3=new JLabel();
+            Labelfinal3.setBounds(-1000, -1000, anchoPanel, altoPanel);
+            Labelfinal3.setIcon(new ImageIcon(img3));
+            this.add(Labelfinal3);
+            
+            Labelfinal4=new JLabel();
+            Labelfinal4.setBounds(-1000, -1000, anchoPanel, altoPanel);
+            Labelfinal4.setIcon(new ImageIcon(img4));
+            this.add(Labelfinal4);
+            
+            
             img1 = trimImage(img1);
             img2 = trimImage(img2);
             img3 = trimImage(img3);
@@ -2907,6 +2987,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             icono4 = new RotatedIcon(icon4,RotatedIcon.Rotate.UPSIDE_DOWN);
             icono4 = new RotatedIcon(icono4,RotatedIcon.Rotate.UPSIDE_DOWN);
+            
+            this.remove(label);
             
             labelPieza1=new JLabel();
             labelPieza1.setBounds(xImagen,yImagen,img1.getWidth(),img1.getHeight());
@@ -3012,6 +3094,14 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             icono1 = new RotatedIcon(icono1,-90.0);
             labelPieza1.setIcon(icono1);
+            
+            if(Rotacion1>0){
+                Rotacion1--;
+            }
+            else{
+                Rotacion1=3;
+            }
+            
             repaint();
    
         }
@@ -3020,14 +3110,27 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             icono2 = new RotatedIcon(icono2,-90.0);
             labelPieza2.setIcon(icono2);
+            
+            if(Rotacion2>0){
+                Rotacion2--;
+            }
+            else{
+                Rotacion2=3;
+            }
             repaint();
-   
         }
         
         if(piezaSeleccionada==3){
             
             icono3 = new RotatedIcon(icono3,-90.0);
             labelPieza3.setIcon(icono3);
+            
+            if(Rotacion3>0){
+                Rotacion3--;
+            }
+            else{
+                Rotacion3=3;
+            }
             repaint();
    
         }
@@ -3036,6 +3139,13 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             icono4 = new RotatedIcon(icono4,-90.0);
             labelPieza4.setIcon(icono4);
+            
+            if(Rotacion4>0){
+                Rotacion4--;
+            }
+            else{
+                Rotacion4=3;
+            }
             repaint();
    
         }
@@ -3051,6 +3161,12 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             icono1 = new RotatedIcon(icono1,90.0);
             labelPieza1.setIcon(icono1);
+            if(Rotacion1<3){
+                Rotacion1++;
+            }
+            else{
+                Rotacion1=0;
+            }
             repaint();
    
         }
@@ -3059,24 +3175,40 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
             icono2 = new RotatedIcon(icono2,90.0);
             labelPieza2.setIcon(icono2);
+            if(Rotacion2<3){
+                Rotacion2++;
+            }
+            else{
+                Rotacion2=0;
+            } 
             repaint();
-   
+            
         }
         
         if(piezaSeleccionada==3){
             
             icono3 = new RotatedIcon(icono3,90.0);
             labelPieza3.setIcon(icono3);
+            if(Rotacion3<3){
+                Rotacion3++;
+            }
+            else{
+                Rotacion3=0;
+            }
             repaint();
-   
         }
         
         if(piezaSeleccionada==4){
             
             icono4 = new RotatedIcon(icono4,90.0);
             labelPieza4.setIcon(icono4);
+            if(Rotacion4<3){
+                Rotacion4++;
+            }
+            else{
+                Rotacion4=0;
+            }
             repaint();
-   
         }
       }  
         
@@ -3273,45 +3405,43 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     @Override
     public void mouseReleased(MouseEvent e) {
       if(ModoDeJuego==1){   
-        int x = labelPieza1.getLocation().x;
-        int y = labelPieza1.getLocation().y;
-        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 ) {
+
+        if(p1.intersects(interseccionx-5, intersecciony-5,15,15)&& Rotacion1==0) {
             
             labelPieza1.setLocation(-500, 0);
             p1.translate(-1000, 0);
             pieza1terminada=1;
             System.out.println("pieza 1 lista");
+            Labelfinal1.setLocation(xImagenPanel,yImagenPanel);
         }
-        x = labelPieza2.getLocation().x;
-        y = labelPieza2.getLocation().y;
-        
-        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 ) {
+
+        if(p2.intersects(interseccionx-5, intersecciony-5,15,15) && Rotacion2==0) {
             
             labelPieza2.setLocation(-500, 0);
             p2.translate(-1000, 0);
             pieza2terminada=1;
             System.out.println("pieza 2 lista");
+            Labelfinal2.setLocation(xImagenPanel,yImagenPanel);
         }
         
-        x = labelPieza3.getLocation().x;
-        y = labelPieza3.getLocation().y;
+
         
-        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 ) {
+        if(p3.intersects(interseccionx-5, intersecciony-5,15,15)&& Rotacion3==0) {
             
             labelPieza3.setLocation(-500, 0);
             p3.translate(-1000, 0);
             pieza3terminada=1;
             System.out.println("pieza 3 lista");
+            Labelfinal3.setLocation(xImagenPanel,yImagenPanel);
         }
-        x = labelPieza4.getLocation().x;
-        y = labelPieza4.getLocation().y;
-        
-        if(x<xImagenPanel+20 && x>xImagenPanel-20 && y<yImagenPanel+20 && y>yImagenPanel-20 ) {
+
+        if(p4.intersects(interseccionx-5, intersecciony-5,15,15)&& Rotacion4==0) {
             
             labelPieza4.setLocation(-500, 0);
             p4.translate(-1000, 0);
             pieza4terminada=1;
             System.out.println("pieza 4 lista");
+            Labelfinal4.setLocation(xImagenPanel,yImagenPanel);
         }
         
         repaint();
@@ -3418,7 +3548,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
                 repaint();
                 System.out.println("salida "+x+" , "+y);
                 pieza2estado=1;
-                interseccion();
+                interseccion(Linea1,Linea2);
 
 
             }else if(pieza1estado==0 && pieza2estado==0){
