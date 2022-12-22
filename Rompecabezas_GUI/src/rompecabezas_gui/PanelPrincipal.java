@@ -24,6 +24,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 
 /**
  * Clase jpanel donde ocurre el juego
@@ -128,10 +129,10 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     
     /**Posicion x de la imagen central a la que se le hacen los cortes 
      */
-    private int xImagenPanel=200;            
+    private int xImagenPanel=500;            
     /**Posicion y de la imagen central a la que se le hacen los cortes 
      */
-    private int yImagenPanel=400;
+    private int yImagenPanel=600;
     /**Ancho de la imagen central a la que se le hacen los cortes 
      */
     private int anchoPanel=450;
@@ -475,16 +476,19 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
        
         if(pieza1terminada==1 && pieza2terminada==1 && 
                 pieza3terminada==1 && pieza4terminada==1 && ModoDeJuego==1){
-            labelfinal.setLocation(500,100);
+            labelfinal.setLocation(600,100);
+            ModoDeJuego=0;
             labeleditor.setLocation(-500,100);
             labeljuego.setLocation(-500,100);
             
-        }else if(ModoDeJuego==0){
-            labeleditor.setLocation(500,100);
-            labeljuego.setLocation(-500,100);
-        }else{
-            labeljuego.setLocation(500,100);
-            labeleditor.setLocation(-500,100);
+        }else if(ModoDeJuego==0 && pieza1terminada==0 && pieza2terminada==0 && 
+                pieza3terminada==0 && pieza4terminada==0 ){
+            labeleditor.setLocation(600,100);
+            labeljuego.setLocation(-600,100);
+        }else if(pieza1terminada==0 && pieza2terminada==0 && 
+                pieza3terminada==0 && pieza4terminada==0 && ModoDeJuego==1){
+            labeljuego.setLocation(600,100);
+            labeleditor.setLocation(-600,100);
         }
                
         
@@ -504,13 +508,6 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             
         }
         
-        if(L1x2!=-1 && pieza2estado==1 && ModoDeJuego==1){
-            
-            
-            g.drawImage(img, 900, 900, anchoPanel, altoPanel,this); 
-            g.drawImage(img1, 800, 800, anchoPanel, altoPanel,this); 
-            
-        }
     }
     /**
      * Clase que cambia al modo editor
@@ -541,8 +538,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         yImagen3=0;
         xImagen4=0;
         yImagen4=0;
-        xImagenPanel=200;            
-        yImagenPanel=400;
+        xImagenPanel=500;            
+        yImagenPanel=600;
         anchoPanel=450;
         altoPanel=250;        
         pieza1terminada=0;
@@ -595,6 +592,11 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         labelPieza2.setIcon(null);
         labelPieza3.setIcon(null);
         labelPieza4.setIcon(null);
+        
+        Labelfinal1.setLocation(-1000,0);
+        Labelfinal2.setLocation(-1000,0);
+        Labelfinal3.setLocation(-1000,0);
+        Labelfinal4.setLocation(-1000,0);
         
         p1.reset();
         p2.reset();
@@ -651,13 +653,90 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         icono4 = new RotatedIcon(icon4,RotatedIcon.Rotate.UPSIDE_DOWN);
         icono4 = new RotatedIcon(icono4,RotatedIcon.Rotate.UPSIDE_DOWN);
         
+        
         repaint();
     }
     /**
-     * Clase que cambia al modo juego
+     * Metodo que cambia al modo juego
      */
     public void EstadoJuego(){
+        
+        if(ModoDeJuego==0){ 
+            
+        labelfinal.setLocation(-1000,0);
+        
+        Labelfinal1.setLocation(-1000,0);
+        Labelfinal2.setLocation(-1000,0);
+        Labelfinal3.setLocation(-1000,0);
+        Labelfinal4.setLocation(-1000,0);
+        
+        pieza1terminada=0;
+        pieza2terminada=0;
+        pieza3terminada=0;
+        pieza4terminada=0;
+      
+        int puntos[] =new int[4];
+        
+        puntos[0] = 100;
+        puntos[1] = 400;
+        puntos[2] = 800;
+        puntos[3] = 1100;
+        
+        
+        
+           
+            for(int i=0;i<100;i++){
+
+                int x =(int)(Math.random() * 3);
+                int y =(int)(Math.random() * 3);
+                int temp;
+
+                temp = puntos[x];
+                puntos[x]=puntos[y];
+                puntos[y]=temp; 
+            }
+        
+       
+            p1.translate(puntos[0],350);
+            p2.translate(puntos[1],350);
+            p3.translate(puntos[2],350);
+            p4.translate(puntos[3],350);
+
+            labelPieza1.setLocation(puntos[0],350);
+            labelPieza2.setLocation(puntos[1],350);
+            labelPieza3.setLocation(puntos[2],350);
+            labelPieza4.setLocation(puntos[3],350);
+        
+        
+            for(int i=0;i<Math.random()*4;i++){
+                piezaSeleccionada=1;
+
+                RotarIzq();
+            }
+
+            for(int i=0;i<Math.random()*4;i++){
+                piezaSeleccionada=2;
+
+                RotarIzq();
+            }
+
+            for(int i=0;i<Math.random()*4;i++){
+                piezaSeleccionada=3;
+
+                RotarIzq();
+            }
+
+            for(int i=0;i<Math.random()*4;i++){
+                piezaSeleccionada=4;
+
+                RotarIzq(); 
+            }
+            
+            piezaSeleccionada=1;
+        }
+        
         ModoDeJuego=1;
+        
         repaint();
     }
     
@@ -3019,8 +3098,12 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             labelPieza2.setIcon(icono2);
             labelPieza3.setIcon(icono3);
             labelPieza4.setIcon(icono4);
-            
-            
+
+                labelPieza1.setLocation(100, 350);
+                labelPieza2.setLocation(400, 350);
+                labelPieza3.setLocation(800,350);
+                labelPieza4.setLocation(1100,350);
+
         }
         
         repaint();
@@ -3408,8 +3491,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
 
         if(p1.intersects(interseccionx-5, intersecciony-5,15,15)&& Rotacion1==0) {
             
-            labelPieza1.setLocation(-500, 0);
-            p1.translate(-1000, 0);
+            p1.translate(-labelPieza1.getLocation().x,-labelPieza1.getLocation().y);
+            labelPieza1.setLocation(-1000, 0);
             pieza1terminada=1;
             System.out.println("pieza 1 lista");
             Labelfinal1.setLocation(xImagenPanel,yImagenPanel);
@@ -3417,8 +3500,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
 
         if(p2.intersects(interseccionx-5, intersecciony-5,15,15) && Rotacion2==0) {
             
-            labelPieza2.setLocation(-500, 0);
-            p2.translate(-1000, 0);
+            p2.translate(-labelPieza2.getLocation().x,-labelPieza2.getLocation().y);
+            labelPieza2.setLocation(-1000, 0);
             pieza2terminada=1;
             System.out.println("pieza 2 lista");
             Labelfinal2.setLocation(xImagenPanel,yImagenPanel);
@@ -3428,8 +3511,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         
         if(p3.intersects(interseccionx-5, intersecciony-5,15,15)&& Rotacion3==0) {
             
-            labelPieza3.setLocation(-500, 0);
-            p3.translate(-1000, 0);
+            p3.translate(-labelPieza3.getLocation().x,-labelPieza3.getLocation().y);
+            labelPieza3.setLocation(-1000, 0);
             pieza3terminada=1;
             System.out.println("pieza 3 lista");
             Labelfinal3.setLocation(xImagenPanel,yImagenPanel);
@@ -3437,8 +3520,8 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
 
         if(p4.intersects(interseccionx-5, intersecciony-5,15,15)&& Rotacion4==0) {
             
-            labelPieza4.setLocation(-500, 0);
-            p4.translate(-1000, 0);
+            p4.translate(-labelPieza4.getLocation().x,-labelPieza4.getLocation().y);
+            labelPieza4.setLocation(-1000, 0);
             pieza4terminada=1;
             System.out.println("pieza 4 lista");
             Labelfinal4.setLocation(xImagenPanel,yImagenPanel);

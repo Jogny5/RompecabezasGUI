@@ -23,7 +23,7 @@ class Ventana extends JFrame{
         this.setLayout(new BorderLayout());
         this.add(principal);
         this.add(new PanelBotones(),BorderLayout.SOUTH);        
-        this.setSize(1300,800);              
+        this.setSize(1500,1000);              
         setLocationRelativeTo(null);                    
         this.getContentPane().setBackground(Color.white);
         
