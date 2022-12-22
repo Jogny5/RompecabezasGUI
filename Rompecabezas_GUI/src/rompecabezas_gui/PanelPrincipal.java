@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Clase jpanel donde ocurre el juego
@@ -664,6 +665,7 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
         if(ModoDeJuego==0){ 
             
         labelfinal.setLocation(-1000,0);
+        labeljuego.setLocation(600,100);
         
         Labelfinal1.setLocation(-1000,0);
         Labelfinal2.setLocation(-1000,0);
@@ -706,28 +708,32 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
             labelPieza2.setLocation(puntos[1],350);
             labelPieza3.setLocation(puntos[2],350);
             labelPieza4.setLocation(puntos[3],350);
+            
+            Random rand = new Random(5);
         
-        
-            for(int i=0;i<Math.random()*4;i++){
-                piezaSeleccionada=1;
+            piezaSeleccionada=1;
+            for(int i=0;i<rand.nextInt(4-0) + 0;i++){
+                
 
                 RotarIzq();
             }
 
-            for(int i=0;i<Math.random()*4;i++){
-                piezaSeleccionada=2;
+            piezaSeleccionada=2;
+            for(int i=0;i<rand.nextInt(4-0) + 0;i++){
+                
+
+                RotarIzq();
+            }
+            
+            piezaSeleccionada=3;
+            for(int i=0;i<rand.nextInt(4-0) + 0;i++){
+                
 
                 RotarIzq();
             }
 
-            for(int i=0;i<Math.random()*4;i++){
-                piezaSeleccionada=3;
-
-                RotarIzq();
-            }
-
-            for(int i=0;i<Math.random()*4;i++){
-                piezaSeleccionada=4;
+            piezaSeleccionada=4;
+            for(int i=0;i<rand.nextInt(4-0) + 0;i++){
 
                 RotarIzq(); 
             }
@@ -3171,130 +3177,132 @@ public class PanelPrincipal extends JPanel implements MouseListener,MouseMotionL
     /**
      * Metodo que rota la pieza seleccionada en -90 grados 
      */
-    public void RotarIzq(){
-      if(ModoDeJuego==1){   
-        if(piezaSeleccionada==1 ){
-            
-            icono1 = new RotatedIcon(icono1,-90.0);
-            labelPieza1.setIcon(icono1);
-            
-            if(Rotacion1>0){
-                Rotacion1--;
+    public void RotarIzq(){   
+        if(labeljuego.getLocation().x!=-600){
+
+            if(piezaSeleccionada==1 ){
+
+                icono1 = new RotatedIcon(icono1,-90.0);
+                labelPieza1.setIcon(icono1);
+
+                if(Rotacion1>0){
+                    Rotacion1--;
+                }
+                else{
+                    Rotacion1=3;
+                }
+
+                repaint();
+
             }
-            else{
-                Rotacion1=3;
+
+            if(piezaSeleccionada==2){
+
+                icono2 = new RotatedIcon(icono2,-90.0);
+                labelPieza2.setIcon(icono2);
+
+                if(Rotacion2>0){
+                    Rotacion2--;
+                }
+                else{
+                    Rotacion2=3;
+                }
+                repaint();
             }
-            
-            repaint();
-   
+
+            if(piezaSeleccionada==3){
+
+                icono3 = new RotatedIcon(icono3,-90.0);
+                labelPieza3.setIcon(icono3);
+
+                if(Rotacion3>0){
+                    Rotacion3--;
+                }
+                else{
+                    Rotacion3=3;
+                }
+                repaint();
+
+            }
+
+            if(piezaSeleccionada==4){
+
+                icono4 = new RotatedIcon(icono4,-90.0);
+                labelPieza4.setIcon(icono4);
+
+                if(Rotacion4>0){
+                    Rotacion4--;
+                }
+                else{
+                    Rotacion4=3;
+                }
+                repaint();
+
+            }
         }
-        
-        if(piezaSeleccionada==2){
-            
-            icono2 = new RotatedIcon(icono2,-90.0);
-            labelPieza2.setIcon(icono2);
-            
-            if(Rotacion2>0){
-                Rotacion2--;
-            }
-            else{
-                Rotacion2=3;
-            }
-            repaint();
-        }
-        
-        if(piezaSeleccionada==3){
-            
-            icono3 = new RotatedIcon(icono3,-90.0);
-            labelPieza3.setIcon(icono3);
-            
-            if(Rotacion3>0){
-                Rotacion3--;
-            }
-            else{
-                Rotacion3=3;
-            }
-            repaint();
-   
-        }
-        
-        if(piezaSeleccionada==4){
-            
-            icono4 = new RotatedIcon(icono4,-90.0);
-            labelPieza4.setIcon(icono4);
-            
-            if(Rotacion4>0){
-                Rotacion4--;
-            }
-            else{
-                Rotacion4=3;
-            }
-            repaint();
-   
-        }
-      }
     }
     
     /**
      * Metodo que rota la pieza seleccionada en 90 grados 
      */
     public void RotarDer(){
-      if(ModoDeJuego==1){   
-        if(piezaSeleccionada==1 ){
-            
-            icono1 = new RotatedIcon(icono1,90.0);
-            labelPieza1.setIcon(icono1);
-            if(Rotacion1<3){
-                Rotacion1++;
+     
+        if(labeljuego.getLocation().x!=-600){
+
+            if(piezaSeleccionada==1 ){
+
+                icono1 = new RotatedIcon(icono1,90.0);
+                labelPieza1.setIcon(icono1);
+                if(Rotacion1<3){
+                    Rotacion1++;
+                }
+                else{
+                    Rotacion1=0;
+                }
+                repaint();
+
             }
-            else{
-                Rotacion1=0;
+
+            if(piezaSeleccionada==2){
+
+                icono2 = new RotatedIcon(icono2,90.0);
+                labelPieza2.setIcon(icono2);
+                if(Rotacion2<3){
+                    Rotacion2++;
+                }
+                else{
+                    Rotacion2=0;
+                } 
+                repaint();
+
             }
-            repaint();
-   
+
+            if(piezaSeleccionada==3){
+
+                icono3 = new RotatedIcon(icono3,90.0);
+                labelPieza3.setIcon(icono3);
+                if(Rotacion3<3){
+                    Rotacion3++;
+                }
+                else{
+                    Rotacion3=0;
+                }
+                repaint();
+            }
+
+            if(piezaSeleccionada==4){
+
+                icono4 = new RotatedIcon(icono4,90.0);
+                labelPieza4.setIcon(icono4);
+                if(Rotacion4<3){
+                    Rotacion4++;
+                }
+                else{
+                    Rotacion4=0;
+                }
+                repaint();
+            }
         }
-        
-        if(piezaSeleccionada==2){
-            
-            icono2 = new RotatedIcon(icono2,90.0);
-            labelPieza2.setIcon(icono2);
-            if(Rotacion2<3){
-                Rotacion2++;
-            }
-            else{
-                Rotacion2=0;
-            } 
-            repaint();
-            
-        }
-        
-        if(piezaSeleccionada==3){
-            
-            icono3 = new RotatedIcon(icono3,90.0);
-            labelPieza3.setIcon(icono3);
-            if(Rotacion3<3){
-                Rotacion3++;
-            }
-            else{
-                Rotacion3=0;
-            }
-            repaint();
-        }
-        
-        if(piezaSeleccionada==4){
-            
-            icono4 = new RotatedIcon(icono4,90.0);
-            labelPieza4.setIcon(icono4);
-            if(Rotacion4<3){
-                Rotacion4++;
-            }
-            else{
-                Rotacion4=0;
-            }
-            repaint();
-        }
-      }  
-        
     }
     
     
